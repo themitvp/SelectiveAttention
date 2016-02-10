@@ -81,6 +81,8 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="StartController.cs" />
     <Compile Include="StartView.cs" />
+    <Compile Include="ImageController.cs" />
+    <Compile Include="ImageView.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>

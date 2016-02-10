@@ -26,7 +26,7 @@ namespace SelectiveAttention
 		{
 			_startView.startButton.TouchUpInside += (object sender, EventArgs e) => {
 				Console.WriteLine("du har trykket på knappen!");
-
+				//NavigationController.PushViewController(
 			};
 		}
 	}
