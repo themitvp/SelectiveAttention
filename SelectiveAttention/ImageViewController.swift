@@ -71,9 +71,11 @@ class ImageViewController: UIViewController {
             numberOfSwitches += 1
             
             imageName = "original"
+            changeImageBtn.title = "See manipulated"
+            
             if showingModified == false {
                 imageName = "manipulated"
-                
+                changeImageBtn.title = "See original"
             }
             
             for (tag, _) in selectedPoints {
