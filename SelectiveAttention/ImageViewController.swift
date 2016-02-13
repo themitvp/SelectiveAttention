@@ -33,7 +33,14 @@ class ImageViewController: UIViewController {
     var imageName = "original"
     
     var timer = NSTimer()
-    var correctPoints = [CGPoint(x:342.666661580404, y:134.999989827474),CGPoint(x:3.999989827474, y:88.9999898274739), CGPoint(x:105.999989827474, y:57.3333333333333), CGPoint(x:224.999989827474, y:3.99998982747394), CGPoint(x:133.999989827474, y:227.333333333333), CGPoint(x: 270.999989827474, y: 233.333333333333)]
+    var correctPoints = [
+        CGPoint(x:342.666661580404, y:134.999989827474),
+        CGPoint(x:3.999989827474, y:88.9999898274739),
+        CGPoint(x:105.999989827474, y:57.3333333333333),
+        CGPoint(x:224.999989827474, y:3.99998982747394),
+        CGPoint(x:133.999989827474, y:227.333333333333),
+        CGPoint(x: 270.999989827474, y: 233.333333333333)
+    ]
     
 
     var performanceHistory = [[String  : String ]]() //Holding the saved data. 
@@ -127,7 +134,7 @@ class ImageViewController: UIViewController {
                 
                 for point in correctPoints {
                     let distance = hypot(value.x - point.x, value.y - point.y)
-                    if distance < 20{
+                    if distance < 40{
                         imagePath = "green_circle.gif"
                         numberOfCorrect += 1
                     }
@@ -172,16 +179,19 @@ class ImageViewController: UIViewController {
             let image = UIImage(named: imageName)
             let newImageView = UIImageView(image: image!)
             print(location)
-            newImageView.frame = CGRect(x: location.x-10, y: location.y-10, width: 20, height: 20)
+            newImageView.frame = CGRect(x: location.x-20, y: location.y-20, width: 40, height: 40)
             newImageView.tag = currentTag
             
             let pressRecognizer = UITapGestureRecognizer(target:self, action:Selector("removeCircle:"))
+            let panGesture = UIPanGestureRecognizer(target: self, action: Selector("wasDragged:"))
+            
             newImageView.userInteractionEnabled = true
             newImageView.addGestureRecognizer(pressRecognizer)
+            newImageView.addGestureRecognizer(panGesture)
             
             sender.view!.addSubview(newImageView)
             
-            selectedPoints[currentTag] = CGPoint(x: location.x-10, y: location.y-10)
+            selectedPoints[currentTag] = CGPoint(x: location.x-20, y: location.y-20)
             
             currentTag += 1
             
@@ -189,6 +199,29 @@ class ImageViewController: UIViewController {
         }
     }
     
+    //Method to handle the dragging of an image
+    var dragStartPositionRelativeToCenter : CGPoint?
+    
+    func wasDragged(gesture: UIPanGestureRecognizer) {
+        if isDone == false && showingModified == true{
+            let draggedImage = gesture.view!
+            let translation = gesture.translationInView(self.imageView) //Difference from the starting point.
+            
+            if gesture.state == UIGestureRecognizerState.Began {
+                //Set starting point for the image
+                dragStartPositionRelativeToCenter = CGPoint(x: draggedImage.center.x, y: draggedImage.center.y)
+            }
+            
+            draggedImage.center = CGPoint(x: (dragStartPositionRelativeToCenter?.x)! + translation.x, y: (dragStartPositionRelativeToCenter?.y)! + translation.y)
+            
+            if gesture.state == UIGestureRecognizerState.Ended {
+                dragStartPositionRelativeToCenter = nil
+            }
+            selectedPoints[draggedImage.tag] = CGPoint(x: draggedImage.center.x, y: draggedImage.center.y)
+        }
+    }
+    
+    //Function to remove a circle when clicked.
     func removeCircle(sender: UILongPressGestureRecognizer)
     {
         if isDone == false && showingModified == true {
