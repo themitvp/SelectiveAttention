@@ -8,14 +8,12 @@
 
 /*
 Punkter:
-(342.666661580404, 134.999989827474) : Gelænder
-(3.999989827474, 88.9999898274739) : Personer
-(105.999989827474, 57.3333333333333)  :Kirke
-(224.999989827474, 3.99998982747394) : Grene
-(133.999989827474, 227.333333333333) : Fliser
-(270.999989827474, 233.333333333333) : Fliser ved græs
-
-
+    (342.666661580404, 134.999989827474) : Gelænder
+    (3.999989827474, 88.9999898274739) : Personer
+    (105.999989827474, 57.3333333333333)  :Kirke
+    (224.999989827474, 3.99998982747394) : Grene
+    (133.999989827474, 227.333333333333) : Fliser
+    (270.999989827474, 233.333333333333) : Fliser ved græs
 */
 
 import UIKit
@@ -25,7 +23,7 @@ class ImageViewController: UIViewController {
     var time = 0
     var numberOfSwitches = 0
     var currentTag = 10
-    var selectedPoints = [Int: CGPoint]()
+    var selectedPoints = [Int: SelectedPoint]()
     
     var showingModified = true
     var isDone = false
@@ -33,6 +31,7 @@ class ImageViewController: UIViewController {
     var imageName = "original"
     
     var timer = NSTimer()
+    
     var correctPoints = [
         CGPoint(x:342.666661580404, y:134.999989827474),
         CGPoint(x:3.999989827474, y:88.9999898274739),
@@ -42,8 +41,7 @@ class ImageViewController: UIViewController {
         CGPoint(x: 270.999989827474, y: 233.333333333333)
     ]
     
-
-    var performanceHistory = [[String  : String ]]() //Holding the saved data. 
+    var performanceHistory = [PerformanceHistory]() //Holding the saved data.
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var doneBtn: UIBarButtonItem!
@@ -52,6 +50,14 @@ class ImageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Load saved data
+        if NSUserDefaults.standardUserDefaults().objectForKey("TestPerformanceHistoryCustom") != nil {
+            
+            let decoded = NSUserDefaults.standardUserDefaults().objectForKey("TestPerformanceHistoryCustom") as! NSData
+            performanceHistory = NSKeyedUnarchiver.unarchiveObjectWithData(decoded) as! [PerformanceHistory]
+        }
+        
+        
         //Set long pressed gesture recosnizer on the image.
         let longPressRecognizer = UILongPressGestureRecognizer(target:self, action:Selector("imageLongPressed:"))
         imageView.userInteractionEnabled = true
@@ -59,13 +65,6 @@ class ImageViewController: UIViewController {
         
         //Time to get the time used.
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("increaseTimer"), userInfo: nil, repeats: true)
-        
-        //Load saved data
-        if NSUserDefaults.standardUserDefaults().objectForKey("TestPerformanceHistory") != nil {
-            
-            performanceHistory = NSUserDefaults.standardUserDefaults().objectForKey("TestPerformanceHistory") as! [[String  : String ]]
-            
-        }
     }
 
     func increaseTimer() {
@@ -130,12 +129,12 @@ class ImageViewController: UIViewController {
         for (tag, value) in selectedPoints {
             if let imageViewTemp = view.viewWithTag(tag) as? UIImageView {
                 
-                var imagePath = "cross.png"
+                var imagePath = "red.png"
                 
                 for point in correctPoints {
-                    let distance = hypot(value.x - point.x, value.y - point.y)
+                    let distance = hypot(CGFloat(value.xCoordinate) - point.x, CGFloat(value.yCoordinate) - point.y)
                     if distance < 40{
-                        imagePath = "green_circle.gif"
+                        imagePath = "green.png"
                         numberOfCorrect += 1
                     }
                 }
@@ -147,13 +146,19 @@ class ImageViewController: UIViewController {
         
         //save data
         let date = NSDate()
-        var new_performance = [String  : String ]()
-        new_performance["correct"] = "\(numberOfCorrect)"
-        new_performance["seconds"] = "\(time)"
-        new_performance["switches"] = "\(numberOfSwitches)"
-        new_performance["date"]  = "\(date)"
+        var temp_points = [SelectedPoint]()
+        for (tag, value) in selectedPoints{
+            temp_points.append(SelectedPoint(tagId: tag, selectedAfterTime: value.selectedAfterTime, xCoordinate: value.xCoordinate, yCoordinate: value.yCoordinate))
+        }
+        let new_performance = PerformanceHistory(date: date, totalTime: time, switches: numberOfSwitches, correct: numberOfCorrect, selectedPoints: temp_points)
         performanceHistory.append(new_performance)
-        NSUserDefaults.standardUserDefaults().setObject(performanceHistory, forKey: "TestPerformanceHistory")
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let encodedData = NSKeyedArchiver.archivedDataWithRootObject(performanceHistory)
+        userDefaults.setObject(encodedData, forKey: "TestPerformanceHistoryCustom")
+        userDefaults.synchronize()
+        
+        //NSUserDefaults.standardUserDefaults().setObject(performanceHistory, forKey: "TestPerformanceHistory")
         
         
         //Show alert box
@@ -173,12 +178,11 @@ class ImageViewController: UIViewController {
         if(sender.state == UIGestureRecognizerState.Began && isDone == false && showingModified == true){
             
             let location = sender.locationInView(sender.view) //Use the imageview as the view.
-            print(location)
             
             let imageName = "orange_circle.png"
             let image = UIImage(named: imageName)
             let newImageView = UIImageView(image: image!)
-            print(location)
+
             newImageView.frame = CGRect(x: location.x-20, y: location.y-20, width: 40, height: 40)
             newImageView.tag = currentTag
             
@@ -190,8 +194,8 @@ class ImageViewController: UIViewController {
             newImageView.addGestureRecognizer(panGesture)
             
             sender.view!.addSubview(newImageView)
-            
-            selectedPoints[currentTag] = CGPoint(x: location.x-20, y: location.y-20)
+
+            selectedPoints[currentTag] = SelectedPoint(tagId: currentTag, selectedAfterTime: time, xCoordinate: Float(location.x - 20), yCoordinate: Float(location.y-20))
             
             currentTag += 1
             
@@ -217,7 +221,8 @@ class ImageViewController: UIViewController {
             if gesture.state == UIGestureRecognizerState.Ended {
                 dragStartPositionRelativeToCenter = nil
             }
-            selectedPoints[draggedImage.tag] = CGPoint(x: draggedImage.center.x, y: draggedImage.center.y)
+            //selectedPoints[draggedImage.tag] = CGPoint(x: draggedImage.center.x, y: draggedImage.center.y)
+            selectedPoints[draggedImage.tag] = SelectedPoint(tagId: draggedImage.tag, selectedAfterTime: time, xCoordinate: Float(draggedImage.center.x), yCoordinate: Float(draggedImage.center.y))
         }
     }
     

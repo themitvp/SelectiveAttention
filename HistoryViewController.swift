@@ -9,18 +9,17 @@
 import UIKit
 
 class HistoryViewController: UIViewController, UITableViewDelegate {
-    var performanceHistory = [[String  : String ]]()
+    var performanceHistory = [PerformanceHistory]()
     
     @IBOutlet weak var historyTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if NSUserDefaults.standardUserDefaults().objectForKey("TestPerformanceHistory") != nil {
+        //Load saved data
+        if NSUserDefaults.standardUserDefaults().objectForKey("TestPerformanceHistoryCustom") != nil {
             
-            performanceHistory = NSUserDefaults.standardUserDefaults().objectForKey("TestPerformanceHistory") as! [[String  : String ]]
-            historyTable.reloadData()
-            print(performanceHistory)
-            
+            let decoded = NSUserDefaults.standardUserDefaults().objectForKey("TestPerformanceHistoryCustom") as! NSData
+            performanceHistory = NSKeyedUnarchiver.unarchiveObjectWithData(decoded) as! [PerformanceHistory]
         }
     }
 
@@ -38,12 +37,13 @@ class HistoryViewController: UIViewController, UITableViewDelegate {
         
         //let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! HistoryTableViewCell
+
+        let item = performanceHistory[indexPath.row]
         
-        cell.dateLabel?.text = performanceHistory[indexPath.row]["date"]
-        cell.timeLabel?.text = performanceHistory[indexPath.row]["seconds"]! + " seconds"
-        cell.switchesLabel?.text = performanceHistory[indexPath.row]["switches"]
-        cell.correctLabel?.text = performanceHistory[indexPath.row]["correct"]
-        
+        cell.dateLabel?.text = "\(item.date)"
+        cell.timeLabel?.text = "\(item.totalTime) seconds"
+        cell.switchesLabel?.text = "\(item.switches)"
+        cell.correctLabel?.text = "\(item.correct)"
         return cell
         
     }
@@ -53,7 +53,10 @@ class HistoryViewController: UIViewController, UITableViewDelegate {
             
             performanceHistory.removeAtIndex(indexPath.row)
             
-            NSUserDefaults.standardUserDefaults().setObject(performanceHistory, forKey: "TestPerformanceHistory")
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            let encodedData = NSKeyedArchiver.archivedDataWithRootObject(performanceHistory)
+            userDefaults.setObject(encodedData, forKey: "TestPerformanceHistoryCustom")
+            userDefaults.synchronize()
             
             historyTable.reloadData()
         }

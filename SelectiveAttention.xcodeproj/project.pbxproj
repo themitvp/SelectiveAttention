@@ -24,6 +24,10 @@
 		FE513DAF1C6E0BAA004C4EC8 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE513DAE1C6E0BAA004C4EC8 /* HistoryViewController.swift */; };
 		FE513DB11C6E1883004C4EC8 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE513DB01C6E1883004C4EC8 /* HistoryTableViewCell.swift */; };
 		FE513DB31C6E2F1F004C4EC8 /* front.png in Resources */ = {isa = PBXBuildFile; fileRef = FE513DB21C6E2F1F004C4EC8 /* front.png */; };
+		FE513DB61C6F8D86004C4EC8 /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = FE513DB41C6F8D86004C4EC8 /* green.png */; };
+		FE513DB71C6F8D86004C4EC8 /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = FE513DB51C6F8D86004C4EC8 /* red.png */; };
+		FE513DB91C70FF78004C4EC8 /* PerformanceHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE513DB81C70FF78004C4EC8 /* PerformanceHistory.swift */; };
+		FE513DBD1C710C16004C4EC8 /* SelectedPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE513DBC1C710C16004C4EC8 /* SelectedPoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +71,10 @@
 		FE513DAE1C6E0BAA004C4EC8 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HistoryViewController.swift; path = ../HistoryViewController.swift; sourceTree = "<group>"; };
 		FE513DB01C6E1883004C4EC8 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		FE513DB21C6E2F1F004C4EC8 /* front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = front.png; sourceTree = "<group>"; };
+		FE513DB41C6F8D86004C4EC8 /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green.png; sourceTree = "<group>"; };
+		FE513DB51C6F8D86004C4EC8 /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red.png; sourceTree = "<group>"; };
+		FE513DB81C70FF78004C4EC8 /* PerformanceHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceHistory.swift; sourceTree = "<group>"; };
+		FE513DBC1C710C16004C4EC8 /* SelectedPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedPoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +135,8 @@
 				FE13200B1C6B88C4008C4B33 /* LaunchScreen.storyboard */,
 				FE13200E1C6B88C4008C4B33 /* Info.plist */,
 				FE513DB01C6E1883004C4EC8 /* HistoryTableViewCell.swift */,
+				FE513DB81C70FF78004C4EC8 /* PerformanceHistory.swift */,
+				FE513DBC1C710C16004C4EC8 /* SelectedPoint.swift */,
 			);
 			path = SelectiveAttention;
 			sourceTree = "<group>";
@@ -152,6 +162,8 @@
 		FE1320401C6BDB7C008C4B33 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FE513DB41C6F8D86004C4EC8 /* green.png */,
+				FE513DB51C6F8D86004C4EC8 /* red.png */,
 				FE513DB21C6E2F1F004C4EC8 /* front.png */,
 				FE13203C1C6BBB61008C4B33 /* cross.png */,
 				FE13203A1C6BBB4B008C4B33 /* orange_circle.png */,
@@ -271,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE13203D1C6BBB61008C4B33 /* cross.png in Resources */,
+				FE513DB61C6F8D86004C4EC8 /* green.png in Resources */,
 				FE13200D1C6B88C4008C4B33 /* LaunchScreen.storyboard in Resources */,
 				FE13203B1C6BBB4B008C4B33 /* orange_circle.png in Resources */,
 				FE13200A1C6B88C4008C4B33 /* Assets.xcassets in Resources */,
@@ -278,6 +291,7 @@
 				FE1320081C6B88C4008C4B33 /* Main.storyboard in Resources */,
 				FE1320331C6B8A09008C4B33 /* original.png in Resources */,
 				FE513DB31C6E2F1F004C4EC8 /* front.png in Resources */,
+				FE513DB71C6F8D86004C4EC8 /* red.png in Resources */,
 				FE1320391C6BBAEC008C4B33 /* green_circle.gif in Resources */,
 				FE1320371C6BA2F7008C4B33 /* circle_red.png in Resources */,
 			);
@@ -305,8 +319,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE1320051C6B88C4008C4B33 /* ViewController.swift in Sources */,
+				FE513DB91C70FF78004C4EC8 /* PerformanceHistory.swift in Sources */,
 				FE1320351C6B8B76008C4B33 /* ImageViewController.swift in Sources */,
 				FE1320031C6B88C4008C4B33 /* AppDelegate.swift in Sources */,
+				FE513DBD1C710C16004C4EC8 /* SelectedPoint.swift in Sources */,
 				FE513DAF1C6E0BAA004C4EC8 /* HistoryViewController.swift in Sources */,
 				FE513DB11C6E1883004C4EC8 /* HistoryTableViewCell.swift in Sources */,
 			);
