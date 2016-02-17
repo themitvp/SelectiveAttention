@@ -6,6 +6,15 @@
 //  Copyright © 2016 Jesper Østergaard. All rights reserved.
 //
 
+/*
+Notes to what could be improved:
+- Save reaction time
+- Save click after change (Save last image as variable to see it the user clicked just after the image was changed)
+- Graphs
+- Play around with the graph framework:
+
+*/
+
 import UIKit
 
 class ViewController: UIViewController {
