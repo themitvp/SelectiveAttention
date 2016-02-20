@@ -11,14 +11,21 @@ import UIKit
 class FirstTestTableViewController: UITableViewController {
 
     @IBOutlet var table: UITableView!
-    var resultsOne : [ClickItem] = []
+
+    let section = ["Double click on image", "Click after image removed"]
+    var itemsOne : [ClickItem] = []
+    var itemsTwo : [Double] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if NSUserDefaults.standardUserDefaults().objectForKey("TestOnePerformance") != nil {
             let decoded  = NSUserDefaults.standardUserDefaults().objectForKey("TestOnePerformance") as! NSData
-            resultsOne = NSKeyedUnarchiver.unarchiveObjectWithData(decoded) as! [ClickItem]
+            itemsOne = NSKeyedUnarchiver.unarchiveObjectWithData(decoded) as! [ClickItem]
             
+            table.reloadData()
+        }
+        if NSUserDefaults.standardUserDefaults().objectForKey("TestDoubleClicksOne") != nil {
+            itemsTwo = NSUserDefaults.standardUserDefaults().objectForKey("TestDoubleClicksOne") as! [Double]
             table.reloadData()
         }
         
@@ -30,35 +37,60 @@ class FirstTestTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.section[section]
+    }
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return self.section.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return resultsOne.count
+        if section == 0
+        {
+            return itemsOne.count
+        }else{
+            return itemsTwo.count
+        }
     }
 
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
 
-        let item = resultsOne[indexPath.row]
-        cell.textLabel?.text = "Delay: \(item.delay) seconds, time: \(item.secondsBeforeClick) seconds"
+        
+        if indexPath.section == 0
+        {
+            let item = itemsOne[indexPath.row]
+            cell.textLabel?.text = "Delay: \(item.delay) seconds, time: \(item.secondsBeforeClick) seconds"
+        }else
+        {
+            let item = itemsTwo[indexPath.row]
+            cell.textLabel?.text = "Delay: \(item) seconds"
+        }
 
         return cell
     }
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            
-            resultsOne.removeAtIndex(indexPath.row)
-            
-            let userDefaults = NSUserDefaults.standardUserDefaults()
-            let encodedData = NSKeyedArchiver.archivedDataWithRootObject(resultsOne)
-            userDefaults.setObject(encodedData, forKey: "TestOnePerformance")
-            userDefaults.synchronize()
-            
-            table.reloadData()
+            if indexPath.section == 0
+            {
+                itemsOne.removeAtIndex(indexPath.row)
+                
+                let userDefaults = NSUserDefaults.standardUserDefaults()
+                let encodedData = NSKeyedArchiver.archivedDataWithRootObject(itemsOne)
+                userDefaults.setObject(encodedData, forKey: "TestOnePerformance")
+                userDefaults.synchronize()
+                
+                table.reloadData()
+            }
+            else{
+                itemsTwo.removeAtIndex(indexPath.row)
+                NSUserDefaults.standardUserDefaults().setObject(itemsTwo, forKey: "TestDoubleClicksOne")
+                
+                table.reloadData()
+            }
         }
     }
     /*

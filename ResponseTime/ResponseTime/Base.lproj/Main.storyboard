@@ -363,6 +363,104 @@
             </objects>
             <point key="canvasLocation" x="358" y="1105"/>
         </scene>
+        <!--Test one graph-->
+        <scene sceneID="uen-hy-dko">
+            <objects>
+                <viewController title="Test one graph" id="CAC-cc-q9r" customClass="TestOneGraphViewController" customModule="ResponseTime" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jXG-bl-THV"/>
+                        <viewControllerLayoutGuide type="bottom" id="gfI-TS-wb3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jcK-l3-hL7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="awe-U3-55X" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g2m-ld-pq3">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="DjP-UA-crw"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="See table" id="x6Q-Aa-9QX">
+                                        <connections>
+                                            <segue destination="zpA-cE-wGa" kind="show" id="KEE-yr-bXQ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="g2m-ld-pq3" firstAttribute="leading" secondItem="jcK-l3-hL7" secondAttribute="leadingMargin" constant="-20" id="Ime-Yb-jRt"/>
+                            <constraint firstItem="g2m-ld-pq3" firstAttribute="top" secondItem="awe-U3-55X" secondAttribute="bottom" id="M9B-Cn-PbJ"/>
+                            <constraint firstItem="awe-U3-55X" firstAttribute="top" secondItem="jXG-bl-THV" secondAttribute="bottom" id="h6c-fg-Oh5"/>
+                            <constraint firstItem="awe-U3-55X" firstAttribute="leading" secondItem="jcK-l3-hL7" secondAttribute="leadingMargin" constant="-20" id="jhS-08-Rfy"/>
+                            <constraint firstItem="gfI-TS-wb3" firstAttribute="top" secondItem="g2m-ld-pq3" secondAttribute="bottom" id="jmD-8e-3bR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="awe-U3-55X" secondAttribute="trailing" constant="-20" id="pdX-VQ-UL9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="g2m-ld-pq3" secondAttribute="trailing" constant="-20" id="r5S-fE-nQ0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="barChartView" destination="awe-U3-55X" id="yaR-CF-C8e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I3o-uM-f1o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1237" y="2314"/>
+        </scene>
+        <!--Test Two Graph View Controller-->
+        <scene sceneID="1h2-Hg-WFT">
+            <objects>
+                <viewController id="f2l-ak-UlS" customClass="TestTwoGraphViewController" customModule="ResponseTime" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hd7-1r-Gjn"/>
+                        <viewControllerLayoutGuide type="bottom" id="KW8-IY-ghI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bnU-kd-l8D">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cmJ-Kb-Qxb">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="oAU-tp-7zj"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="See table" id="ZtB-OI-mVV">
+                                        <connections>
+                                            <segue destination="yN6-hg-vHg" kind="show" id="Pq8-rU-deK"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yeb-JY-Dcz" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="cmJ-Kb-Qxb" secondAttribute="trailing" constant="-20" id="24m-8p-bLO"/>
+                            <constraint firstItem="yeb-JY-Dcz" firstAttribute="top" secondItem="hd7-1r-Gjn" secondAttribute="bottom" id="4eA-Ls-Ygc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yeb-JY-Dcz" secondAttribute="trailing" constant="-20" id="8A8-sM-6X3"/>
+                            <constraint firstItem="KW8-IY-ghI" firstAttribute="top" secondItem="cmJ-Kb-Qxb" secondAttribute="bottom" id="An8-wA-EaH"/>
+                            <constraint firstItem="cmJ-Kb-Qxb" firstAttribute="top" secondItem="yeb-JY-Dcz" secondAttribute="bottom" id="ZNA-88-pEp"/>
+                            <constraint firstItem="yeb-JY-Dcz" firstAttribute="leading" secondItem="bnU-kd-l8D" secondAttribute="leadingMargin" constant="-20" id="jen-zM-cvf"/>
+                            <constraint firstItem="cmJ-Kb-Qxb" firstAttribute="leading" secondItem="bnU-kd-l8D" secondAttribute="leadingMargin" constant="-20" id="sG9-0s-jHM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="barChartView" destination="yeb-JY-Dcz" id="gTt-XD-QWe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kqd-qe-JUR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1310" y="3006"/>
+        </scene>
         <!--Result-->
         <scene sceneID="htH-OP-mbe">
             <objects>
@@ -403,7 +501,7 @@
                                 </constraints>
                                 <state key="normal" title="See result"/>
                                 <connections>
-                                    <segue destination="zpA-cE-wGa" kind="show" id="HAw-pU-FxB"/>
+                                    <segue destination="CAC-cc-q9r" kind="show" id="TcZ-bx-5WO"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Second test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1e-I0-xhZ">
@@ -434,7 +532,7 @@
                                 </constraints>
                                 <state key="normal" title="See result"/>
                                 <connections>
-                                    <segue destination="yN6-hg-vHg" kind="show" id="fdX-hk-n4C"/>
+                                    <segue destination="f2l-ak-UlS" kind="show" id="4ao-He-rJh"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Third test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gsf-J4-Sqg">
@@ -532,6 +630,40 @@
             </objects>
             <point key="canvasLocation" x="428" y="3147"/>
         </scene>
+        <!--Test Bar Chart View Controller-->
+        <scene sceneID="Cfp-2k-Yuc">
+            <objects>
+                <viewController id="NFk-7r-3dF" customClass="TestBarChartViewController" customModule="ResponseTime" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uyY-X7-nSo"/>
+                        <viewControllerLayoutGuide type="bottom" id="gre-rr-bVR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KO9-3v-v06">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hGc-yz-ibX" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="118" y="139" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hGc-yz-ibX" firstAttribute="leading" secondItem="KO9-3v-v06" secondAttribute="leadingMargin" id="5Tk-1j-o5C"/>
+                            <constraint firstItem="hGc-yz-ibX" firstAttribute="top" secondItem="uyY-X7-nSo" secondAttribute="bottom" id="cYJ-uq-maf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hGc-yz-ibX" secondAttribute="trailing" id="hBr-MQ-CWk"/>
+                            <constraint firstItem="gre-rr-bVR" firstAttribute="top" secondItem="hGc-yz-ibX" secondAttribute="bottom" id="mrQ-cm-9uV"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <connections>
+                        <outlet property="barChartView" destination="hGc-yz-ibX" id="fn9-SC-WdT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nI5-P3-Ok5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="340" y="3969"/>
+        </scene>
         <!--First test result-->
         <scene sceneID="qy0-41-jM3">
             <objects>
@@ -555,13 +687,15 @@
                             <outlet property="delegate" destination="zpA-cE-wGa" id="e2n-Ry-IaW"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="table" destination="h2h-89-lj2" id="MKc-Bc-szt"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iwx-xn-Wx2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1158" y="2310"/>
+            <point key="canvasLocation" x="2017" y="2314"/>
         </scene>
         <!--Second test result-->
         <scene sceneID="i8t-wh-e6b">
@@ -592,7 +726,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ujX-1E-RBm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1158" y="2979"/>
+            <point key="canvasLocation" x="2017" y="2995"/>
         </scene>
         <!--Second test-->
         <scene sceneID="0ev-0W-eBJ">

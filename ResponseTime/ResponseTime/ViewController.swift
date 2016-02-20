@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     //Buttons
     var buttonTags = [11,12,13,14,15,16,17,18,19]
     //POssible delays. Select random in each round.
-    var possibleDelays = [0.1, 0.3, 0.5, 0.7, 0.9, 1, 1.1, 1.2]
+    var possibleDelays = [0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2]
     //If we have a delay waiting
     var delayWaiting = false
     //Time before delayed started to the user clicked the button again.
@@ -32,8 +32,12 @@ class ViewController: UIViewController {
     var timer = NSTimer()
     var selectedTag = 0
     
+    var lastButtonTag = 0
+    var lastDelay = 0.0
+    
     //saved data
     var savedData : [ClickItem] = []
+    var doubleClick : [Double] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +46,9 @@ class ViewController: UIViewController {
         if NSUserDefaults.standardUserDefaults().objectForKey("TestOnePerformance") != nil {
             let decoded  = NSUserDefaults.standardUserDefaults().objectForKey("TestOnePerformance") as! NSData
             savedData = NSKeyedUnarchiver.unarchiveObjectWithData(decoded) as! [ClickItem]
+        }
+        if NSUserDefaults.standardUserDefaults().objectForKey("TestDoubleClicksOne") != nil {
+            doubleClick = NSUserDefaults.standardUserDefaults().objectForKey("TestDoubleClicksOne") as! [Double]
         }
         
         setVisibleButton()
@@ -57,6 +64,10 @@ class ViewController: UIViewController {
     }
 
     func setVisibleButton(){
+        
+        lastDelay = waitSeconds
+        lastButtonTag = selectedTag
+        
         timer.invalidate()
         //waitSeconds = Double(CGFloat(Float(arc4random()) / Float(UINT32_MAX)))
         waitSeconds = possibleDelays.randomItem()
@@ -110,6 +121,10 @@ class ViewController: UIViewController {
                     self.setVisibleButton()
                 })
             }
+        }else if sender.tag == lastButtonTag { //User clicked again on the last button just after it has been removed.
+            print(lastDelay)
+            doubleClick.append(lastDelay)
+            NSUserDefaults.standardUserDefaults().setObject(doubleClick, forKey: "TestDoubleClicksOne")
         }
     }
 

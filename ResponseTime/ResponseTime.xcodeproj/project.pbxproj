@@ -25,6 +25,11 @@
 		FE27984F1C7509F8000CDAAC /* ThirdTestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE27984E1C7509F8000CDAAC /* ThirdTestTableViewController.swift */; };
 		FE2798511C750C88000CDAAC /* SecondTestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2798501C750C88000CDAAC /* SecondTestTableViewController.swift */; };
 		FE2798531C750E35000CDAAC /* FirstTestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2798521C750E35000CDAAC /* FirstTestTableViewController.swift */; };
+		FE497ABE1C752FB9006A068C /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE497AB91C752F99006A068C /* Charts.framework */; };
+		FE497ABF1C752FB9006A068C /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FE497AB91C752F99006A068C /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FE497AC41C7530F6006A068C /* TestBarChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE497AC31C7530F6006A068C /* TestBarChartViewController.swift */; };
+		FE8A653C1C78A44C00C361B8 /* TestOneGraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8A653B1C78A44C00C361B8 /* TestOneGraphViewController.swift */; };
+		FE8A65421C78CD5C00C361B8 /* TestTwoGraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8A65411C78CD5C00C361B8 /* TestTwoGraphViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +47,49 @@
 			remoteGlobalIDString = FE27980C1C74B7AD000CDAAC;
 			remoteInfo = ResponseTime;
 		};
+		FE497AB81C752F99006A068C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE497AB21C752F99006A068C /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5BA8EC401A9D14DC00CE82E1;
+			remoteInfo = "Charts-iOS";
+		};
+		FE497ABA1C752F99006A068C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE497AB21C752F99006A068C /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A52C5C371BAC5CA400594CDD;
+			remoteInfo = "Charts-TV";
+		};
+		FE497ABC1C752F99006A068C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE497AB21C752F99006A068C /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06AEE7A21BDC3F8B009875AE;
+			remoteInfo = ChartsTests;
+		};
+		FE497AC01C752FB9006A068C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE497AB21C752F99006A068C /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
+			remoteInfo = "Charts-iOS";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FE497AC21C752FB9006A068C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FE497ABF1C752FB9006A068C /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		FE27980D1C74B7AD000CDAAC /* ResponseTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResponseTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +116,10 @@
 		FE27984E1C7509F8000CDAAC /* ThirdTestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdTestTableViewController.swift; sourceTree = "<group>"; };
 		FE2798501C750C88000CDAAC /* SecondTestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondTestTableViewController.swift; sourceTree = "<group>"; };
 		FE2798521C750E35000CDAAC /* FirstTestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTestTableViewController.swift; sourceTree = "<group>"; };
+		FE497AB21C752F99006A068C /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = "<group>"; };
+		FE497AC31C7530F6006A068C /* TestBarChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestBarChartViewController.swift; sourceTree = "<group>"; };
+		FE8A653B1C78A44C00C361B8 /* TestOneGraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestOneGraphViewController.swift; sourceTree = "<group>"; };
+		FE8A65411C78CD5C00C361B8 /* TestTwoGraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTwoGraphViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE497ABE1C752FB9006A068C /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +155,7 @@
 				FE2798241C74B7AD000CDAAC /* ResponseTimeTests */,
 				FE27982F1C74B7AE000CDAAC /* ResponseTimeUITests */,
 				FE27980E1C74B7AD000CDAAC /* Products */,
+				FE497AB21C752F99006A068C /* Charts.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,6 +189,9 @@
 				FE27984E1C7509F8000CDAAC /* ThirdTestTableViewController.swift */,
 				FE2798501C750C88000CDAAC /* SecondTestTableViewController.swift */,
 				FE2798521C750E35000CDAAC /* FirstTestTableViewController.swift */,
+				FE497AC31C7530F6006A068C /* TestBarChartViewController.swift */,
+				FE8A653B1C78A44C00C361B8 /* TestOneGraphViewController.swift */,
+				FE8A65411C78CD5C00C361B8 /* TestTwoGraphViewController.swift */,
 			);
 			path = ResponseTime;
 			sourceTree = "<group>";
@@ -158,6 +214,16 @@
 			path = ResponseTimeUITests;
 			sourceTree = "<group>";
 		};
+		FE497AB31C752F99006A068C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FE497AB91C752F99006A068C /* Charts.framework */,
+				FE497ABB1C752F99006A068C /* Charts.framework */,
+				FE497ABD1C752F99006A068C /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -168,10 +234,12 @@
 				FE2798091C74B7AD000CDAAC /* Sources */,
 				FE27980A1C74B7AD000CDAAC /* Frameworks */,
 				FE27980B1C74B7AD000CDAAC /* Resources */,
+				FE497AC21C752FB9006A068C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				FE497AC11C752FB9006A068C /* PBXTargetDependency */,
 			);
 			name = ResponseTime;
 			productName = ResponseTime;
@@ -254,6 +322,12 @@
 			mainGroup = FE2798041C74B7AD000CDAAC;
 			productRefGroup = FE27980E1C74B7AD000CDAAC /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = FE497AB31C752F99006A068C /* Products */;
+					ProjectRef = FE497AB21C752F99006A068C /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				FE27980C1C74B7AD000CDAAC /* ResponseTime */,
@@ -262,6 +336,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		FE497AB91C752F99006A068C /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = FE497AB81C752F99006A068C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FE497ABB1C752F99006A068C /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = FE497ABA1C752F99006A068C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FE497ABD1C752F99006A068C /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = FE497ABC1C752F99006A068C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		FE27980B1C74B7AD000CDAAC /* Resources */ = {
@@ -299,10 +397,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE8A65421C78CD5C00C361B8 /* TestTwoGraphViewController.swift in Sources */,
 				FE2798531C750E35000CDAAC /* FirstTestTableViewController.swift in Sources */,
 				FE2798471C74F5B0000CDAAC /* ResultViewController.swift in Sources */,
 				FE2798511C750C88000CDAAC /* SecondTestTableViewController.swift in Sources */,
 				FE27984F1C7509F8000CDAAC /* ThirdTestTableViewController.swift in Sources */,
+				FE497AC41C7530F6006A068C /* TestBarChartViewController.swift in Sources */,
+				FE8A653C1C78A44C00C361B8 /* TestOneGraphViewController.swift in Sources */,
 				FE2798131C74B7AD000CDAAC /* ViewController.swift in Sources */,
 				FE2798491C74F7D7000CDAAC /* ThirdTestViewController.swift in Sources */,
 				FE2798431C74E1A6000CDAAC /* SecondTestViewController.swift in Sources */,
@@ -339,6 +440,11 @@
 			isa = PBXTargetDependency;
 			target = FE27980C1C74B7AD000CDAAC /* ResponseTime */;
 			targetProxy = FE27982D1C74B7AE000CDAAC /* PBXContainerItemProxy */;
+		};
+		FE497AC11C752FB9006A068C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Charts-iOS";
+			targetProxy = FE497AC01C752FB9006A068C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -449,6 +555,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = ResponseTime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jbo.ResponseTime;
@@ -460,6 +567,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = ResponseTime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jbo.ResponseTime;
@@ -534,6 +642,7 @@
 				FE2798371C74B7AE000CDAAC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FE2798381C74B7AE000CDAAC /* Build configuration list for PBXNativeTarget "ResponseTimeTests" */ = {
 			isa = XCConfigurationList;
@@ -542,6 +651,7 @@
 				FE27983A1C74B7AE000CDAAC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FE27983B1C74B7AE000CDAAC /* Build configuration list for PBXNativeTarget "ResponseTimeUITests" */ = {
 			isa = XCConfigurationList;
@@ -550,6 +660,7 @@
 				FE27983D1C74B7AE000CDAAC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

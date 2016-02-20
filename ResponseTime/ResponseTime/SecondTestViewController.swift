@@ -20,12 +20,20 @@ class SecondTestViewController: UIViewController {
     var numberBeforeDealy = 0
     var possibleRoundsBeforeDealy = [2,3,4,5,6]
     
+    
+    var lastButtonTag = 0
+    var lastDelay = 0.0
+    
     //saved data
     var savedData : [ClickItem] = []
+    var doubleClick : [Double] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if NSUserDefaults.standardUserDefaults().objectForKey("TestDoubleClicksTwo") != nil {
+            doubleClick = NSUserDefaults.standardUserDefaults().objectForKey("TestDoubleClicksTwo") as! [Double]
+        }
         
         //Load data
         if NSUserDefaults.standardUserDefaults().objectForKey("TestTwoPerformance") != nil {
@@ -50,7 +58,9 @@ class SecondTestViewController: UIViewController {
         timer.invalidate()
         time = 0
         delayWaiting = false
-
+        
+        lastButtonTag = selectedTag
+        
         var button_tag = buttonTags.randomItem()
         if button_tag == selectedTag {
             if button_tag == 19{
@@ -72,6 +82,7 @@ class SecondTestViewController: UIViewController {
             if delayWaiting{
                 
                 //Create new record
+                print(waitSeconds)
                 let newRecord = ClickItem(delay: waitSeconds, secondsBeforeClick: time, username: "", date : NSDate())
                 savedData.append(newRecord)
                 
@@ -90,6 +101,7 @@ class SecondTestViewController: UIViewController {
                 numberBeforeDealy -= 1
                 
                 if numberBeforeDealy == 0 {
+                    lastDelay = waitSeconds
                     let delay = waitSeconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
                     let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
                     dispatch_after(dispatchTime, dispatch_get_main_queue(), {
@@ -104,6 +116,9 @@ class SecondTestViewController: UIViewController {
                     setVisibleButton()
                 }
             }
+        }else if sender.tag == lastButtonTag { //User clicked again on the last button just after it has been removed.
+            doubleClick.append(lastDelay)
+            NSUserDefaults.standardUserDefaults().setObject(doubleClick, forKey: "TestDoubleClicksTwo")
         }
     }
 
