@@ -14,7 +14,7 @@ class SecondTestViewController: UIViewController {
     var buttonTags = [11,12,13,14,15,16,17,18,19]
     var delayWaiting = false
     var time = 0.0
-    var waitSeconds = 0.1
+    var waitSeconds = 0.05
     var timer = NSTimer()
     var selectedTag = 0
     var numberBeforeDealy = 0
@@ -106,7 +106,11 @@ class SecondTestViewController: UIViewController {
                     let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
                     dispatch_after(dispatchTime, dispatch_get_main_queue(), {
                         sender.setImage(nil, forState: .Normal)
-                        self.waitSeconds = self.waitSeconds + 0.1
+                        if self.waitSeconds == 0.05{
+                            self.waitSeconds = 0.1
+                        }else{
+                            self.waitSeconds = self.waitSeconds + 0.1
+                        }
                         self.numberBeforeDealy = self.possibleRoundsBeforeDealy.randomItem()
                         self.setVisibleButton()
                     })
