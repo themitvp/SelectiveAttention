@@ -27,14 +27,15 @@ class TestTwoGraphViewController: UIViewController, ChartViewDelegate {
             let doubleClick = NSUserDefaults.standardUserDefaults().objectForKey("TestDoubleClicksTwo") as! [Double]
             
             for value in doubleClick {
-                let index = delays.indexOf(value)
-                values[index!] = values[index!]+1
+                if let index = delays.indexOf(value){
+                    values[index] = values[index]+1
+                }
             }
         }
         if NSUserDefaults.standardUserDefaults().objectForKey("TestTwoPerformance") != nil {
             let decoded  = NSUserDefaults.standardUserDefaults().objectForKey("TestTwoPerformance") as! NSData
             let itemsOne = NSKeyedUnarchiver.unarchiveObjectWithData(decoded) as! [ClickItem]
-            print(itemsOne)
+
             for value in itemsOne{
                 if let index = delays.indexOf(value.delay){
                     valuesTwo[index] = valuesTwo[index]+1
@@ -66,8 +67,8 @@ class TestTwoGraphViewController: UIViewController, ChartViewDelegate {
             dataEntriesTwo.append(dataEntryTwo)
         }
         
-        let chartDataSet = BarChartDataSet(yVals: dataEntries, label: "Number of double clicks")
-        let chartDataSetTwo = BarChartDataSet(yVals: dataEntriesTwo, label: "Clicks after image removed")
+        let chartDataSet = BarChartDataSet(yVals: dataEntriesTwo, label: "Number of double clicks")
+        let chartDataSetTwo = BarChartDataSet(yVals: dataEntries, label: "Clicks after image removed")
         
         let chartData = BarChartData(xVals: ["0.05", "0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9", "1.0", "1.1", "1.2"], dataSets:[chartDataSet, chartDataSetTwo])
         

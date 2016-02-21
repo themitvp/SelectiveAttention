@@ -87,8 +87,8 @@ class TestOneGraphViewController: UIViewController, ChartViewDelegate {
             dataEntriesTwo.append(dataEntryTwo)
         }
         
-        let chartDataSet = BarChartDataSet(yVals: dataEntries, label: "Number of double clicks")
-        let chartDataSetTwo = BarChartDataSet(yVals: dataEntriesTwo, label: "Clicks after image removed")
+        let chartDataSet = BarChartDataSet(yVals: dataEntriesTwo, label: "Number of double clicks")
+        let chartDataSetTwo = BarChartDataSet(yVals: dataEntries, label: "Clicks after image removed")
         
         let chartData = BarChartData(xVals: ["0.05", "0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9", "1.0", "1.1", "1.2"], dataSets:[chartDataSet, chartDataSetTwo])
         

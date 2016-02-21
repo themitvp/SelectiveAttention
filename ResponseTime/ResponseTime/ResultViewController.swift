@@ -24,7 +24,6 @@ class ResultViewController: UIViewController {
         if NSUserDefaults.standardUserDefaults().objectForKey("TestTwoPerformance") != nil {
             let decoded  = NSUserDefaults.standardUserDefaults().objectForKey("TestTwoPerformance") as! NSData
             resultsTwo = NSKeyedUnarchiver.unarchiveObjectWithData(decoded) as! [ClickItem]
-            print(resultsTwo)
             
             var totalDelay = 0.0
             for item in resultsTwo{
@@ -36,7 +35,6 @@ class ResultViewController: UIViewController {
         if NSUserDefaults.standardUserDefaults().objectForKey("TestOnePerformance") != nil {
             let decoded  = NSUserDefaults.standardUserDefaults().objectForKey("TestOnePerformance") as! NSData
             resultsOne = NSKeyedUnarchiver.unarchiveObjectWithData(decoded) as! [ClickItem]
-            print(resultsOne)
             
             var totalDelay = 0.0
             for item in resultsOne{
@@ -47,7 +45,6 @@ class ResultViewController: UIViewController {
         }
         if NSUserDefaults.standardUserDefaults().objectForKey("TestThirdPerformance") != nil {
             resultThird = NSUserDefaults.standardUserDefaults().objectForKey("TestThirdPerformance") as! [Double]
-            print(resultThird)
             
             var totalDelay = 0.0
             for item in resultThird{
