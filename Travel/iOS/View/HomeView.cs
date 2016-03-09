@@ -13,10 +13,14 @@ namespace Travel.iOS
 		{
 			this.BackgroundColor = UIColor.White;
 
+			// Initialize & Setup
 			listTable = new UITableView();
-			listTable.Frame = new CGRect(0, 0, frame.Width, frame.Height);
 			listTable.ScrollsToTop = true;
 
+			// Set frame
+			listTable.Frame = new CGRect(0, 0, frame.Width, frame.Height);
+
+			// Add subview
 			this.AddSubview(listTable);
 		}
 	}
