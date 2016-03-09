@@ -28,7 +28,7 @@ namespace Travel.iOS
 
 			// create our nav controller
 			var navController = new UINavigationController ();
-			navController.PushViewController (new HomeViewController (), true);
+			navController.PushViewController (new HomeViewController (), false);
 			Window.RootViewController = navController;
 			Window.MakeKeyAndVisible();
 

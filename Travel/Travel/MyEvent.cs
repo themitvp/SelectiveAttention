@@ -2,9 +2,9 @@
 
 namespace Travel
 {
-	public class Event
+	public class MyEvent
 	{
-		public Event ()
+		public MyEvent ()
 		{
 		}
 

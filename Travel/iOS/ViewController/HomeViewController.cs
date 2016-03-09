@@ -2,17 +2,21 @@
 using UIKit;
 using CoreGraphics;
 using System.Collections.ObjectModel;
+using Foundation;
 
 namespace Travel.iOS
 {
 	public class HomeViewController : UIViewController
 	{
 		public HomeView _homeView;
-		public ObservableCollection<Event> offerList { get; private set; }
+		public ObservableCollection<MyEvent> eventList { get; set; }
+		static NSString HomeCellId = new NSString ("HomeCellId");
 
 		public HomeViewController ()
 		{
-			Title = "Home";
+			Title = "Events";
+
+			eventList = new ObservableCollection<MyEvent> ();
 		}
 
 		public override void LoadView()
@@ -21,6 +25,29 @@ namespace Travel.iOS
 
 			_homeView = new HomeView(new CGRect(0,0,View.Frame.Width, View.Frame.Height));
 			this.View = _homeView;
+		}
+
+		public override void ViewWillAppear (bool animated)
+		{
+			base.ViewWillAppear (animated);
+
+			this.NavigationItem.SetRightBarButtonItem(
+				new UIBarButtonItem(UIBarButtonSystemItem.Add, (sender,args) => {
+					// button was clicked
+					this.NavigationController.PushViewController(new AddEventViewController(this), true);
+				})
+				, true);
+		}
+
+		public override void ViewDidLoad ()
+		{
+			base.ViewDidLoad ();
+
+			BeginInvokeOnMainThread (delegate {
+				_homeView.listTable.RegisterClassForCellReuse(typeof(HomeTableCell), HomeCellId);
+				_homeView.listTable.Source = new HomeTableSource(this);
+				_homeView.listTable.ReloadData();
+			});
 		}
 	}
 }
