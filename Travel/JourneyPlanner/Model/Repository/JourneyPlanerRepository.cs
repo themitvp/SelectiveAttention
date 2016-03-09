@@ -37,16 +37,14 @@ namespace JourneyPlanner.Model.Repository
 			return new StopsNearby ();	
 		}
 
-		public async Task<Trip> GetTrip(TripRequest input)
+		public string GetTrip(TripRequest input)
 		{
 			if (input == null)
 				return null;
 
 			var requestUrl = input.UrlEncode ();
 
-			var i = 1;
-
-			var rs = i
+			return requestUrl;
 		}
 	}
 }

@@ -34,4 +34,10 @@
     <Compile Include="Event.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\JourneyPlanner\JourneyPlanner.csproj">
+      <Project>{4EC5FEFD-A0A0-40D2-87CA-29D12D917ECB}</Project>
+      <Name>JourneyPlanner</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

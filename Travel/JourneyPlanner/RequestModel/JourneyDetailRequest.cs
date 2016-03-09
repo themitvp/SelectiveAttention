@@ -1,6 +1,8 @@
-﻿namespace JourneyPlanner.RequestModel
+﻿using JourneyPlanner.Infrastructure;
+
+namespace JourneyPlanner.RequestModel
 {
-	public class JourneyDetailRequest
+	public class JourneyDetailRequest : JourneyPlannerRequestBase
 	{
 		public string DepartureBoardUrl { get; set; }
 	}

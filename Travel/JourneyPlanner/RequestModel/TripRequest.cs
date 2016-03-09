@@ -1,6 +1,8 @@
-﻿namespace JourneyPlanner.RequestModel
+﻿using JourneyPlanner.Infrastructure;
+
+namespace JourneyPlanner.RequestModel
 {
-	public class TripRequest
+	public class TripRequest : JourneyPlannerRequestBase
 	{
 		public int OriginId { get; set; }
 

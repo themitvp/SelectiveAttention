@@ -1,6 +1,8 @@
-﻿namespace JourneyPlanner.RequestModel
+﻿using JourneyPlanner.Infrastructure;
+
+namespace JourneyPlanner.RequestModel
 {
-	public class MultiDepartureBoardRequest
+	public class MultiDepartureBoardRequest : JourneyPlannerRequestBase
 	{
 		public int Id1 { get; set; }
 

@@ -49,6 +49,7 @@
     <Compile Include="RequestModel\DepartureBoardRequest.cs" />
     <Compile Include="Infrastructure\UrlEncodeExtention.cs" />
     <Compile Include="Infrastructure\JourneyPlannerResponseBase.cs" />
+    <Compile Include="Infrastructure\JourneyPlannerRequestBase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

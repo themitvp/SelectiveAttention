@@ -1,6 +1,8 @@
-﻿namespace JourneyPlanner.RequestModel
+﻿using JourneyPlanner.Infrastructure;
+
+namespace JourneyPlanner.RequestModel
 {
-	public class StopsNearbyRequest
+	public class StopsNearbyRequest : JourneyPlannerRequestBase
 	{
 		public int CoordX { get; set; }
 

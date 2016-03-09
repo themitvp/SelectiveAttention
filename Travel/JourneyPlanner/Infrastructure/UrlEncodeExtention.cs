@@ -6,7 +6,7 @@ namespace JourneyPlanner.Infrastructure
 {
 	internal static class UrlEncodeExtention
 	{
-		public static string UrlEncode<T> (this T collection) where T : JourneyPlannerResponseBase
+		public static string UrlEncode<T> (this T entity) where T : JourneyPlannerRequestBase
 		{
 			var t = typeof(T);
 			var properties = t.GetRuntimeProperties ();
@@ -14,18 +14,18 @@ namespace JourneyPlanner.Infrastructure
 
 			using (var e = properties.GetEnumerator ()) {
 				if (!e.MoveNext ())
-					return;
+					return "";
 
 				PropertyInfo p = e.Current;
 				var val = "";
 				while (e.MoveNext ()) {
-					val = p.GetStringValue ();
+					val = p.GetStringValue(entity);
 					if (!string.IsNullOrEmpty (val))
 						url += Concat(p.Name, val, "&");
 					p = e.Current;
 				}
 
-				val = p.GetStringValue ();
+				val = p.GetStringValue(entity);
 				if (!string.IsNullOrEmpty (val))
 					url += Concat(p.Name, val);
 			}
@@ -34,18 +34,18 @@ namespace JourneyPlanner.Infrastructure
 		}
 
 
-		private static string GetStringValue (this PropertyInfo p)
+		private static string GetStringValue<T> (this PropertyInfo p, T entity)
 		{
-			var type = p.GetType ();
-			if (type is string)
-				return p.GetValue;
+			Type type = p.PropertyType;
+			if (type == typeof(string))
+				return "" + p.GetValue(entity, null);
 
-			if (type is int)
-				return "" + p.GetValue; 
+			if (type  == typeof(int))
+				return "" + p.GetValue(entity, null); 
 			return "";
 		}
 
-		private string Concat (string name, string val, string sep = "")
+		private static string Concat (string name, string val, string sep = "")
 		{
 			return sep + name + "=" + val;
 		}
