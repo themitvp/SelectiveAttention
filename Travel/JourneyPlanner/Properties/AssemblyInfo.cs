@@ -5,11 +5,11 @@ using System.Runtime.CompilerServices;
 // Change them to the values specific to your project.
 
 [assembly: AssemblyTitle ("JourneyPlanner")]
-[assembly: AssemblyDescription ("")]
+[assembly: AssemblyDescription ("Provides an API wrapper for Rejsekortet/JourneyPlaner")]
 [assembly: AssemblyConfiguration ("")]
 [assembly: AssemblyCompany ("")]
 [assembly: AssemblyProduct ("")]
-[assembly: AssemblyCopyright ("Mik")]
+[assembly: AssemblyCopyright ("Mikkel Ole Rømer")]
 [assembly: AssemblyTrademark ("")]
 [assembly: AssemblyCulture ("")]
 
