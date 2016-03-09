@@ -3,7 +3,7 @@
 bin/
 obj/
 *.userprefs
-
+*.DS_Store
 ### Xcode ###
 # Xcode
 #
