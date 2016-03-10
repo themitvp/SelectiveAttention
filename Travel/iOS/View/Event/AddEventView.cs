@@ -12,6 +12,7 @@ namespace Travel.iOS
 
 		// Subview properties
 		public UIDatePicker datePicker;
+		public UITableView searchResultTable;
 
 		public AddEventView (CGRect frame, UIViewController parent) : base (frame)
 		{
@@ -26,14 +27,26 @@ namespace Travel.iOS
 
 			datePicker.UserInteractionEnabled = true;
 			datePicker.BackgroundColor = UIColor.White;
-			//datePicked = (DateTime)datePicker.Date;
+
+			destinationLabel = new UILabel () {
+				Font = UIFont.FromName("HelveticaNeue-Light", 23f),
+				TextColor = UIColor.Black,
+				BackgroundColor = UIColor.White,
+				Text = "Destination"
+			};
+
+			searchResultTable = new UITableView();
+			searchResultTable.ScrollsToTop = false;
 
 			// Set frame
 			datePicker.Frame = new CGRect (0, offset, frame.Width, 260);
+			searchResultTable.Frame = new CGRect(0, datePicker.Frame.Bottom + 20, frame.Width, frame.Height - (datePicker.Frame.Bottom + 20));
 
 			// Add subviews
 			this.AddSubviews (new UIView[] {
-				datePicker
+				datePicker,
+				//destinationLabel,
+				searchResultTable
 			});
 		}
 	}

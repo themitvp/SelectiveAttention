@@ -100,17 +100,22 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="ViewController\HomeViewController.cs" />
-    <Compile Include="View\HomeView.cs" />
-    <Compile Include="View\AddEventView.cs" />
-    <Compile Include="ViewController\AddEventViewController.cs" />
     <Compile Include="GlobalVariables.cs" />
-    <Compile Include="View\HomeTableSource.cs" />
-    <Compile Include="View\HomeTableCell.cs" />
+    <Compile Include="View\Home\HomeTableCell.cs" />
+    <Compile Include="View\Home\HomeView.cs" />
+    <Compile Include="View\Event\AddEventView.cs" />
+    <Compile Include="ViewController\Event\AddEventViewController.cs" />
+    <Compile Include="ViewController\Home\HomeViewController.cs" />
+    <Compile Include="ViewController\Home\HomeTableSource.cs" />
+    <Compile Include="ViewController\Event\SearchResultTableController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <Folder Include="View\" />
     <Folder Include="ViewController\" />
+    <Folder Include="View\Home\" />
+    <Folder Include="View\Event\" />
+    <Folder Include="ViewController\Event\" />
+    <Folder Include="ViewController\Home\" />
   </ItemGroup>
 </Project>
