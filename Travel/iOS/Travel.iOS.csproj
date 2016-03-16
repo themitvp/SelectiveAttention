@@ -86,6 +86,14 @@
       <Project>{3B4A6E7E-AE89-43A9-B512-F7098F1668C7}</Project>
       <Name>Travel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JourneyPlanner\JourneyPlanner.csproj">
+      <Project>{4EC5FEFD-A0A0-40D2-87CA-29D12D917ECB}</Project>
+      <Name>JourneyPlanner</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HttpClientFramework\HttpClientFramework.csproj">
+      <Project>{C03C56B4-6323-42D7-B881-BC27B8E9AC53}</Project>
+      <Name>HttpClientFramework</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />

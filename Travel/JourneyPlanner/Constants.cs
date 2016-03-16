@@ -4,7 +4,7 @@ namespace JourneyPlanner
 {
 	internal class Constants
 	{
-		public const string BaseUrl = "base?";
+		public const string BaseUrl = "http://xmlopen.rejseplanen.dk/bin/rest.exe/";
 
 		public struct LocationService
 		{

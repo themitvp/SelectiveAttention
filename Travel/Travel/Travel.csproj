@@ -32,14 +32,10 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MyEvent.cs" />
-    <Compile Include="ApiProxy.cs" />
+    <Compile Include="TestJourneyPlanner.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\JourneyPlanner\JourneyPlanner.csproj">
-      <Project>{4EC5FEFD-A0A0-40D2-87CA-29D12D917ECB}</Project>
-      <Name>JourneyPlanner</Name>
-    </ProjectReference>
     <Reference Include="ModernHttpClient">
       <HintPath>..\packages\modernhttpclient.2.4.2\lib\Portable-Net45+WinRT45+WP8+WPA81\ModernHttpClient.dll</HintPath>
     </Reference>
@@ -58,5 +54,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JourneyPlanner\JourneyPlanner.csproj">
+      <Project>{4EC5FEFD-A0A0-40D2-87CA-29D12D917ECB}</Project>
+      <Name>JourneyPlanner</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

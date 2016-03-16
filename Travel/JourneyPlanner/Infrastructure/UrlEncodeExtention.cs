@@ -30,7 +30,7 @@ namespace JourneyPlanner.Infrastructure
 					url += Concat(p.Name, val);
 			}
 
-			return url;
+			return url.ToLower()+ "&format=json";
 		}
 
 
@@ -47,7 +47,7 @@ namespace JourneyPlanner.Infrastructure
 
 		private static string Concat (string name, string val, string sep = "")
 		{
-			return sep + name + "=" + val;
+			return name + "=" + val + sep;
 		}
 
 	}

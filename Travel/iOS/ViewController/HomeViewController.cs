@@ -3,6 +3,7 @@ using UIKit;
 using CoreGraphics;
 using System.Collections.ObjectModel;
 using Foundation;
+using Travel;
 
 namespace Travel.iOS
 {
@@ -42,6 +43,12 @@ namespace Travel.iOS
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+
+			var test = new TestJourneyPlanner ();
+
+			var request = test.DoSomething ();
+
+			var location = HttpClientFramework.HttpResponseRepository.Get<JourneyPlanner.Model.Location> (request [0], request [1]).Result;
 
 			BeginInvokeOnMainThread (delegate {
 				_homeView.listTable.RegisterClassForCellReuse(typeof(HomeTableCell), HomeCellId);
