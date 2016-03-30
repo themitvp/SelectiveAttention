@@ -123,6 +123,12 @@
     <Compile Include="ViewController\Event\SearchResultTableController.cs" />
     <Compile Include="View\Event\PickerModel.cs" />
     <Compile Include="View\Home\HomeTableSource.cs" />
+    <Compile Include="ViewController\TabbedHome\TabbedHomeViewController.cs" />
+    <Compile Include="ViewController\Stats\StatsViewController.cs" />
+    <Compile Include="View\Stats\StatsView.cs" />
+    <Compile Include="View\Stats\StatsTableCell.cs" />
+    <Compile Include="ViewController\Stats\StatsTableSource.cs" />
+    <Compile Include="ViewController\TabbedHome\NavigationController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\SQLitePCL.raw.0.8.6\build\Xamarin.iOS10\SQLitePCL.raw.targets" Condition="Exists('..\packages\SQLitePCL.raw.0.8.6\build\Xamarin.iOS10\SQLitePCL.raw.targets')" />
@@ -133,5 +139,25 @@
     <Folder Include="View\Event\" />
     <Folder Include="ViewController\Event\" />
     <Folder Include="ViewController\Home\" />
+    <Folder Include="ViewController\TabbedHome\" />
+    <Folder Include="ViewController\Stats\" />
+    <Folder Include="View\Stats\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\stats.png" />
+    <BundleResource Include="Resources\stats%402x.png" />
+    <BundleResource Include="Resources\stats%403x.png" />
+    <BundleResource Include="Resources\events.png" />
+    <BundleResource Include="Resources\events%402x.png" />
+    <BundleResource Include="Resources\events%403x.png" />
+    <BundleResource Include="Resources\TimeSpent%403x.png" />
+    <BundleResource Include="Resources\TimeSpent%402x.png" />
+    <BundleResource Include="Resources\TimeSpent.png" />
+    <BundleResource Include="Resources\TimeSaved%403x.png" />
+    <BundleResource Include="Resources\TimeSaved.png" />
+    <BundleResource Include="Resources\TimeSaved%402x.png" />
+    <BundleResource Include="Resources\Sleep%403x.png" />
+    <BundleResource Include="Resources\Sleep%402x.png" />
+    <BundleResource Include="Resources\Sleep.png" />
   </ItemGroup>
 </Project>

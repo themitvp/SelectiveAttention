@@ -6,29 +6,29 @@ namespace Travel
 {
 	public class MyEventRepository
 	{
-		Database db = null;
+		Database<MyEvent> db = null;
 
 		public MyEventRepository(SQLiteConnection conn)
 		{
-			db = new Database(conn);
+			db = new Database<MyEvent>(conn);
 		}
 
-		public MyEvent GetTask(int id)
+		public MyEvent GetMyEvent(int id)
 		{
 			return db.GetItem(id);
 		}
 
-		public IEnumerable<MyEvent> GetTasks ()
+		public IEnumerable<MyEvent> GetMyEvents ()
 		{
 			return db.GetItems();
 		}
 
-		public int SaveTask (MyEvent item)
+		public int SaveMyEvent (MyEvent item)
 		{
 			return db.SaveItem(item);
 		}
 
-		public int DeleteTask(int id)
+		public int DeleteMyEvent(int id)
 		{
 			return db.DeleteItem(id);
 		}
