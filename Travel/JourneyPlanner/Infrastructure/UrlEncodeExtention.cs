@@ -30,7 +30,7 @@ namespace JourneyPlanner.Infrastructure
 					url += Concat(p.Name, val);
 			}
 
-			return url.ToLower() + "&format=json";
+			return url + "&format=json";
 		}
 
 
@@ -40,14 +40,14 @@ namespace JourneyPlanner.Infrastructure
 			if (type == typeof(string))
 				return "" + p.GetValue(entity, null);
 
-			if (type  == typeof(int))
+			if (type  == typeof(int?))
 				return "" + p.GetValue(entity, null); 
 			return "";
 		}
 
 		private static string Concat (string name, string val, string sep = "")
 		{
-			return name + "=" + val + sep;
+			return Char.ToLowerInvariant(name[0]) + name.Substring(1) + "=" + val + sep;
 		}
 
 	}

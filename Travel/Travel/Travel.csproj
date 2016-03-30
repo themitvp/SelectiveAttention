@@ -32,14 +32,10 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MyEvent.cs" />
-<<<<<<< HEAD
-    <Compile Include="TestJourneyPlanner.cs" />
-=======
     <Compile Include="ApiProxy.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="MyEventRepository.cs" />
     <Compile Include="MyEventManager.cs" />
->>>>>>> origin
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

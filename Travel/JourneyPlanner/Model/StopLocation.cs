@@ -8,6 +8,7 @@ namespace JourneyPlanner.Model
 		public string Name { get; set; }
 		public int X { get; set; }
 		public int Y { get; set; }
+		public int Distance { get; set; }
 	}
 }
 

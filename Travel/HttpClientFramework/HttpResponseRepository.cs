@@ -16,9 +16,9 @@ namespace HttpClientFramework
 				var client = new HttpClient (new NativeMessageHandler ()); 
 				client.BaseAddress = new Uri (baseUrl);
 				result = await client.GetAsync(endPoint).ConfigureAwait(false);
-				var str = result.Content.ReadAsStringAsync();
+				var str = await result.Content.ReadAsStringAsync();
 
-				return JsonConvert.DeserializeObject<T>(await str);;
+				return JsonConvert.DeserializeObject<T>(str);;
 			} catch (Exception e) {
 				
 				var some = e.Message;

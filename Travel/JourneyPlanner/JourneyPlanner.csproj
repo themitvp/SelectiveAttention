@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>JourneyPlanner</RootNamespace>
     <AssemblyName>JourneyPlanner</AssemblyName>
-    <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
+    <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -38,11 +38,6 @@
     <Compile Include="RequestModel\StopsNearbyRequest.cs" />
     <Compile Include="RequestModel\JourneyDetailRequest.cs" />
     <Compile Include="Model\Trip.cs" />
-    <Compile Include="Model\DepartureBoard.cs" />
-    <Compile Include="Model\ArrivalBoard.cs" />
-    <Compile Include="Model\MultiDepartureBoard.cs" />
-    <Compile Include="Model\StopsNearby.cs" />
-    <Compile Include="Model\JourneyDetail.cs" />
     <Compile Include="Model\Repository\JourneyPlanerRepository.cs" />
     <Compile Include="RequestModel\ArrivalBoardRequest.cs" />
     <Compile Include="RequestModel\DepartureBoardRequest.cs" />
@@ -52,7 +47,26 @@
     <Compile Include="Model\LocationList.cs" />
     <Compile Include="Model\CoordLocation.cs" />
     <Compile Include="Model\StopLocation.cs" />
-    <Compile Include="Model\LocationResult.cs" />
+    <Compile Include="Infrastructure\JourneyPlannerEndpoint.cs" />
+    <Compile Include="ResponseModel\LocationResult.cs" />
+    <Compile Include="ResponseModel\TripResult.cs" />
+    <Compile Include="Model\TripList.cs" />
+    <Compile Include="Model\Leg.cs" />
+    <Compile Include="Model\RouteDetail.cs" />
+    <Compile Include="Model\Note.cs" />
+    <Compile Include="Model\Reference.cs" />
+    <Compile Include="Model\LegList.cs" />
+    <Compile Include="Model\DepartureBoard.cs" />
+    <Compile Include="Model\DepartureBoardList.cs" />
+    <Compile Include="ResponseModel\DepartureBoardResult.cs" />
+    <Compile Include="ResponseModel\MultiDepartureBoardResult.cs" />
+    <Compile Include="ResponseModel\StopsNearbyResult.cs" />
+    <Compile Include="Model\LocationListLite.cs" />
+    <Compile Include="ResponseModel\JourneyDetailsResult.cs" />
+    <Compile Include="Model\JourneyDetailList.cs" />
+    <Compile Include="Model\JourneyName.cs" />
+    <Compile Include="Model\JourneyType.cs" />
+    <Compile Include="ResponseModel\ArrivalBoardRequest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -60,5 +74,11 @@
     <Folder Include="Infrastructure\" />
     <Folder Include="RequestModel\" />
     <Folder Include="Model\Repository\" />
+    <Folder Include="ResponseModel\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="HttpClientFramework">
+      <HintPath>..\HttpClientFramework\bin\Debug\HttpClientFramework.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>
