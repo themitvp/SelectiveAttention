@@ -1,4 +1,5 @@
 ﻿using System;
+using SQLite;
 
 namespace Travel
 {
@@ -8,10 +9,19 @@ namespace Travel
 		{
 		}
 
+		public enum TravelType {
+			PublicTransport,
+			Car,
+			Walking,
+			Bicycling,
+			Running
+		}
+
 		/// <summary>
 		/// Id
 		/// </summary>
-		public string Id { get; set; }
+		[PrimaryKey, AutoIncrement]
+		public int Id { get; set; }
 
 		/// <summary>
 		/// Event name
@@ -22,6 +32,11 @@ namespace Travel
 		/// Destination
 		/// </summary>
 		public string Destination { get; set; }
+
+		/// <summary>
+		/// Type of transportation
+		/// </summary>
+		public TravelType Type { get; set; }
 
 		/// <summary>
 		/// Latitude for destination

@@ -6,7 +6,7 @@ using ModernHttpClient;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using Newtonsoft.Json;
-
+/*
 namespace Travel
 {
 	public sealed class ApiProxy
@@ -79,3 +79,4 @@ namespace Travel
 		}
 	}
 }
+*/

@@ -1,5 +1,9 @@
 ﻿using Foundation;
+using System.Linq;
 using UIKit;
+using System;
+using System.IO;
+using SQLite;
 
 namespace Travel.iOS
 {
@@ -15,10 +19,16 @@ namespace Travel.iOS
 			set;
 		}
 
+		public static AppDelegate Current { get; private set; }
+		public MyEventManager MyEventManager { get; set; }
+		SQLiteConnection conn;
+
+		private HomeViewController viewController;
+		private UINavigationController navController;
+
 		public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
 		{
-			// Override point for customization after application launch.
-			// If not required for your application you can safely delete this method
+			Current = this;
 
 			// create a new window instance based on the screen size
 			Window = new UIWindow(UIScreen.MainScreen.Bounds);
@@ -26,13 +36,71 @@ namespace Travel.iOS
 			// make the window visible
 			Window.MakeKeyAndVisible();
 
+			// Create the database file
+			var sqliteFilename = "MyEventsDB.db3";
+			// we need to put in /Library/ on iOS5.1 to meet Apple's iCloud terms
+			// (they don't want non-user-generated data in Documents)
+			string documentsPath = Environment.GetFolderPath (Environment.SpecialFolder.Personal); // Documents folder
+			string libraryPath = Path.Combine (documentsPath, "..", "Library"); // Library folder
+			var path = Path.Combine(libraryPath, sqliteFilename);
+			conn = new SQLiteConnection(path);
+			MyEventManager = new MyEventManager(conn);
+
+
 			// create our nav controller
-			var navController = new UINavigationController ();
-			navController.PushViewController (new HomeViewController (), false);
+			navController = new UINavigationController ();
+			viewController = new HomeViewController();
+			navController.PushViewController (viewController, false);
 			Window.RootViewController = navController;
 			Window.MakeKeyAndVisible();
 
+			// Ask for permission to show local notifications
+			if (UIDevice.CurrentDevice.CheckSystemVersion (8, 0)) {
+				var notificationSettings = UIUserNotificationSettings.GetSettingsForTypes (
+					UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound, null
+				);
+
+				application.RegisterUserNotificationSettings (notificationSettings);
+			}
+
+			// check for a notification
+			if (launchOptions != null)
+			{
+				// check for a local notification
+				if (launchOptions.ContainsKey(UIApplication.LaunchOptionsLocalNotificationKey))
+				{
+					var localNotification = launchOptions[UIApplication.LaunchOptionsLocalNotificationKey] as UILocalNotification;
+					if (localNotification != null)
+					{
+						UIAlertController okayAlertController = UIAlertController.Create (localNotification.AlertAction, localNotification.AlertBody, UIAlertControllerStyle.Alert);
+						okayAlertController.AddAction (UIAlertAction.Create ("OK", UIAlertActionStyle.Default, alert => {
+							viewController.OpenedFromNotification();
+						}));
+
+						navController.PresentViewController (okayAlertController, true, null);
+
+						// reset our badge
+						UIApplication.SharedApplication.ApplicationIconBadgeNumber = 0;
+					}
+				}
+			}
+
+
+
 			return true;
+		}
+
+		public override void ReceivedLocalNotification(UIApplication application, UILocalNotification notification)
+		{
+			// show an alert
+			UIAlertController okayAlertController = UIAlertController.Create (notification.AlertAction, notification.AlertBody, UIAlertControllerStyle.Alert);
+			okayAlertController.AddAction (UIAlertAction.Create ("OK", UIAlertActionStyle.Default, alert => {
+				viewController.OpenedFromNotification();
+			}));
+			navController.PresentViewController (okayAlertController, true, null);
+
+			// reset our badge
+			UIApplication.SharedApplication.ApplicationIconBadgeNumber = 0;
 		}
 
 		public override void OnResignActivation (UIApplication application)
