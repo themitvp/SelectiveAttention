@@ -66,7 +66,6 @@
     <Compile Include="Model\JourneyDetailList.cs" />
     <Compile Include="Model\JourneyName.cs" />
     <Compile Include="Model\JourneyType.cs" />
-    <Compile Include="ResponseModel\ArrivalBoardRequest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -80,5 +79,8 @@
     <Reference Include="HttpClientFramework">
       <HintPath>..\HttpClientFramework\bin\Debug\HttpClientFramework.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ResponseModel\ArrivalBoardResult" />
   </ItemGroup>
 </Project>

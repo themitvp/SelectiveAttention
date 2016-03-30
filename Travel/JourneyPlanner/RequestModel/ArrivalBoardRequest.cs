@@ -11,13 +11,13 @@ namespace JourneyPlanner
 
 		public string Time { get; set; }
 
-		public int OffsetTine { get ; set; }
+		public int? OffsetTine { get ; set; }
 
-		public int UseTog { get; set; }
+		public int? UseTog { get; set; }
 
-		public int UseBus { get; set; }
+		public int? UseBus { get; set; }
 
-		public int UseMetro { get; set; }
+		public int? UseMetro { get; set; }
 	}
 }
 
