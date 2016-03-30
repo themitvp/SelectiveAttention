@@ -3,6 +3,7 @@ using UIKit;
 using CoreGraphics;
 using System.Collections.ObjectModel;
 using Foundation;
+using System.Linq;
 
 namespace Travel.iOS
 {
@@ -10,7 +11,7 @@ namespace Travel.iOS
 	{
 		public HomeView _homeView;
 		public ObservableCollection<MyEvent> eventList { get; set; }
-		static NSString HomeCellId = new NSString ("HomeCellId");
+		string HomeCellId = "HomeId";
 
 		public HomeViewController ()
 		{
@@ -37,6 +38,8 @@ namespace Travel.iOS
 					this.NavigationController.PushViewController(new AddEventViewController(this), true);
 				})
 				, true);
+
+			PopulateTable();
 		}
 
 		public override void ViewDidLoad ()
@@ -44,10 +47,52 @@ namespace Travel.iOS
 			base.ViewDidLoad ();
 
 			BeginInvokeOnMainThread (delegate {
-				_homeView.listTable.RegisterClassForCellReuse(typeof(HomeTableCell), HomeCellId);
+				//_homeView.listTable.RegisterClassForCellReuse(typeof(UITableViewCell), HomeCellId);
 				_homeView.listTable.Source = new HomeTableSource(this);
 				_homeView.listTable.ReloadData();
 			});
+		}
+
+		protected void PopulateTable()
+		{
+			eventList.Clear();
+			var eventsDB = AppDelegate.Current.MyEventManager.GetTasks().ToList();
+
+			foreach (var i in eventsDB) {
+				eventList.Add(i);
+			}
+		}
+
+		public void SaveMyEvent(MyEvent newMyEvent)
+		{
+			AppDelegate.Current.MyEventManager.SaveTask(newMyEvent);
+
+			var date1 = DateTime.Now;
+			var seconds = (newMyEvent.Arrival - date1).TotalSeconds;
+
+			// create the notification
+			var notification = new UILocalNotification();
+
+			// set the fire date (the date time in which it will fire)
+			notification.FireDate = NSDate.FromTimeIntervalSinceNow(seconds);
+
+			// configure the alert
+			notification.AlertAction = "View My Event";
+			notification.AlertBody = newMyEvent.Destination + " " + newMyEvent.Arrival.ToString();
+
+			// modify the badge
+			notification.ApplicationIconBadgeNumber = 1;
+
+			// set the sound to be the default sound
+			notification.SoundName = UILocalNotification.DefaultSoundName;
+
+			// schedule it
+			UIApplication.SharedApplication.ScheduleLocalNotification(notification);
+		}
+
+		public void OpenedFromNotification()
+		{
+			Console.WriteLine("Opened from notification");
 		}
 	}
 }

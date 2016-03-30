@@ -14,11 +14,16 @@ namespace Travel.iOS
 
 		public List<MKMapItem> MapItems { get; set; }
 
-		public NSIndexPath checkedCell;
+		public MKMapItem checkedMapItem;
+		private UITextField direction;
+		private AddEventViewController parent;
 
-		public SearchResultTableController()
+
+		public SearchResultTableController(AddEventViewController parent, UITextField direction)
 		{
 			MapItems = new List<MKMapItem> ();
+			this.direction = direction;
+			this.parent = parent;
 		}
 
 		public override nint RowsInSection(UITableView tableview, nint section)
@@ -36,12 +41,6 @@ namespace Travel.iOS
 			
 			cell.TextLabel.Text = MapItems[indexPath.Row].Name;
 
-			if (checkedCell != null && checkedCell.IsEqual (indexPath)) {
-				cell.Accessory = UITableViewCellAccessory.Checkmark;
-			} else {
-				cell.Accessory = UITableViewCellAccessory.None;
-			}
-
 			return cell;
 		}
 
@@ -49,21 +48,12 @@ namespace Travel.iOS
 		{
 			Console.WriteLine("In RowSelected");
 
-			if (checkedCell != null) {
-				tableView.CellAt (checkedCell).Accessory = UITableViewCellAccessory.None;
-
-			}
-			if (checkedCell != null && checkedCell.IsEqual (indexPath)) {
-				checkedCell = null;
-			} else {
-				tableView.CellAt (indexPath).Accessory = UITableViewCellAccessory.Checkmark; 
-				checkedCell = indexPath;
-			}
-
 			var item = MapItems[indexPath.Row];
-
+			direction.Text = item.Name;
+			checkedMapItem = item;
 			tableView.DeselectRow(indexPath, true); // normal iOS behaviour is to remove the blue highlight
 		}
+
 
 		public void Search (string forSearchString) {
 			// create search request

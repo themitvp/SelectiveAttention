@@ -38,17 +38,25 @@ namespace Travel.iOS
 			this.NavigationItem.SetRightBarButtonItem(
 				new UIBarButtonItem(UIBarButtonSystemItem.Done, (sender,args) => {
 					// button was clicked
-					var date = (DateTime)_addEventView.datePicker.Date;
-					date = date.AddHours(1);
+					var cont = (SearchResultTableController) searchController.SearchResultsController;
 
-					var newEvent = new MyEvent() {
-						Arrival = date
-					};
+					if (cont.checkedMapItem != null && _addEventView.datePicker.Date != null && _addEventView.typeOfTransport.Text != null)
+					{
+						var date = (DateTime)_addEventView.datePicker.Date;
+						date = date.AddHours(2);
 
-					parent.eventList.Add(newEvent);
+						var newEvent = new MyEvent() {
+							Arrival = date,
+							Destination = cont.checkedMapItem.Name,
+							Latitude = cont.checkedMapItem.Placemark.Coordinate.Latitude,
+							Longitude = cont.checkedMapItem.Placemark.Coordinate.Longitude,
+							Type = _addEventView.selectedTypeOfTransport
+						};
 
-					Console.WriteLine(date);
-					this.NavigationController.PopViewController(true);
+						parent.SaveMyEvent(newEvent);
+
+						this.NavigationController.PopViewController(true);
+					}
 				})
 				, true);
 		}
@@ -59,25 +67,33 @@ namespace Travel.iOS
 
 			locationManager.RequestWhenInUseAuthorization ();
 
-			var searchResultsController = new SearchResultTableController ();
+			var searchResultsController = new SearchResultTableController (this, _addEventView.direction);
 
 			var searchUpdater = new SearchResultsUpdator ();
 			searchUpdater.UpdateSearchResults += searchResultsController.Search;
+
 
 			//add the search controller
 			searchController = new UISearchController (searchResultsController) {
 				SearchResultsUpdater = searchUpdater
 			};
 
+
+
 			searchController.SearchBar.SizeToFit ();
 			searchController.DimsBackgroundDuringPresentation = false;
+
 			searchController.SearchBar.SearchBarStyle = UISearchBarStyle.Minimal;
 			searchController.SearchBar.Placeholder = "Enter a search query";
 
 			searchController.HidesNavigationBarDuringPresentation = false;
 			_addEventView.searchResultTable.TableHeaderView = searchController.SearchBar;
+
+			searchResultsController.DefinesPresentationContext = true;
+			searchController.DefinesPresentationContext = true;
 			DefinesPresentationContext = true;
 		}
+
 
 		public class SearchResultsUpdator : UISearchResultsUpdating
 		{
