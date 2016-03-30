@@ -37,7 +37,6 @@
     <Compile Include="RequestModel\MultiDepartureBoardRequest.cs" />
     <Compile Include="RequestModel\StopsNearbyRequest.cs" />
     <Compile Include="RequestModel\JourneyDetailRequest.cs" />
-    <Compile Include="Model\Location.cs" />
     <Compile Include="Model\Trip.cs" />
     <Compile Include="Model\DepartureBoard.cs" />
     <Compile Include="Model\ArrivalBoard.cs" />
@@ -50,6 +49,10 @@
     <Compile Include="Infrastructure\UrlEncodeExtention.cs" />
     <Compile Include="Infrastructure\JourneyPlannerResponseBase.cs" />
     <Compile Include="Infrastructure\JourneyPlannerRequestBase.cs" />
+    <Compile Include="Model\LocationList.cs" />
+    <Compile Include="Model\CoordLocation.cs" />
+    <Compile Include="Model\StopLocation.cs" />
+    <Compile Include="Model\LocationResult.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

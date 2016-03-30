@@ -3,6 +3,7 @@ using System.Net.Http;
 using ModernHttpClient;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Net;
 
 namespace HttpClientFramework
 {
@@ -10,19 +11,14 @@ namespace HttpClientFramework
 	{
 		public static async Task<T> Get<T> (string baseUrl, string endPoint)
 		{
-			var staticBaseUrl = "https://api.nammy.eu";
-			var staticUrl = "/api/Offer/getproximityoffers?lat=55.676097&lng=12.568337&desiredCurrencyId=e41d6289ccd711e5bcc902d2a237d21d&page=0";
-
 			try {
 				HttpResponseMessage result;
-				using (var client = new HttpClient (new NativeMessageHandler ())) {
-					client.BaseAddress = new Uri (staticBaseUrl);
-					result = await client.GetAsync (staticUrl);
-				}
+				var client = new HttpClient (new NativeMessageHandler ()); 
+				client.BaseAddress = new Uri (baseUrl);
+				result = await client.GetAsync(endPoint).ConfigureAwait(false);
+				var str = result.Content.ReadAsStringAsync();
 
-				var content = await result.Content.ReadAsStringAsync ();
-
-				return JsonConvert.DeserializeObject<T> (content);
+				return JsonConvert.DeserializeObject<T>(await str);;
 			} catch (Exception e) {
 				
 				var some = e.Message;

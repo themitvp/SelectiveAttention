@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JourneyPlanner", "JourneyPl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpClientFramework", "HttpClientFramework\HttpClientFramework.csproj", "{C03C56B4-6323-42D7-B881-BC27B8E9AC53}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "JourneyPlannerFramework", "JourneyPlannerFramework\JourneyPlannerFramework.shproj", "{177AB584-E263-4056-BA18-5A43C01C9D46}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator

@@ -30,7 +30,7 @@ namespace JourneyPlanner.Infrastructure
 					url += Concat(p.Name, val);
 			}
 
-			return url.ToLower()+ "&format=json";
+			return url.ToLower() + "&format=json";
 		}
 
 
