@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Travel
 {
-	public class Database
+	public class Database<T> where T : Item, new()
 	{
 		static object locker = new object ();
 
@@ -13,24 +13,24 @@ namespace Travel
 
 		public string path;
 
-		public Database(SQLiteConnection conn) 
+		public Database (SQLiteConnection conn) 
 		{
 			database = conn;
 			// create the tables
-			database.CreateTable<MyEvent>();
+			database.CreateTable<T>();
 		}
 
-		public IEnumerable<MyEvent> GetItems ()
+		public IEnumerable<T> GetItems ()
 		{
 			lock (locker) {
-				return (from i in database.Table<MyEvent>() select i).ToList();
+				return (from i in database.Table<T>() select i).ToList();
 			}
 		}
 
-		public MyEvent GetItem (int id) 
+		public T GetItem (int id)
 		{
 			lock (locker) {
-				return database.Table<MyEvent>().FirstOrDefault(x => x.Id == id);
+				return database.Table<T>().FirstOrDefault(x => x.Id == id);
 				// Following throws NotSupportedException - thanks aliegeni
 				//return (from i in Table<T> ()
 				//        where i.ID == id
@@ -38,7 +38,7 @@ namespace Travel
 			}
 		}
 
-		public int SaveItem (MyEvent item) 
+		public int SaveItem (T item)
 		{
 			lock (locker) {
 				if (item.Id != 0) {
@@ -50,10 +50,10 @@ namespace Travel
 			}
 		}
 
-		public int DeleteItem(int id) 
+		public int DeleteItem (int id) 
 		{
 			lock (locker) {
-				return database.Delete<MyEvent>(id);
+				return database.Delete<T>(id);
 			}
 		}
 	}

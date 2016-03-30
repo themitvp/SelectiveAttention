@@ -11,7 +11,6 @@ namespace Travel.iOS
 	{
 		public HomeView _homeView;
 		public ObservableCollection<MyEvent> eventList { get; set; }
-		string HomeCellId = "HomeId";
 
 		public HomeViewController ()
 		{
@@ -39,6 +38,9 @@ namespace Travel.iOS
 				})
 				, true);
 
+			// Make the font in the status bar white
+			//UIApplication.SharedApplication.StatusBarStyle = UIStatusBarStyle.LightContent;
+
 			PopulateTable();
 		}
 
@@ -47,7 +49,6 @@ namespace Travel.iOS
 			base.ViewDidLoad ();
 
 			BeginInvokeOnMainThread (delegate {
-				//_homeView.listTable.RegisterClassForCellReuse(typeof(UITableViewCell), HomeCellId);
 				_homeView.listTable.Source = new HomeTableSource(this);
 				_homeView.listTable.ReloadData();
 			});
@@ -56,7 +57,7 @@ namespace Travel.iOS
 		protected void PopulateTable()
 		{
 			eventList.Clear();
-			var eventsDB = AppDelegate.Current.MyEventManager.GetTasks().ToList();
+			var eventsDB = AppDelegate.Current.MyEventManager.GetMyEvents().ToList();
 
 			foreach (var i in eventsDB) {
 				eventList.Add(i);
@@ -65,7 +66,7 @@ namespace Travel.iOS
 
 		public void SaveMyEvent(MyEvent newMyEvent)
 		{
-			AppDelegate.Current.MyEventManager.SaveTask(newMyEvent);
+			AppDelegate.Current.MyEventManager.SaveMyEvent(newMyEvent);
 
 			var date1 = DateTime.Now;
 			var seconds = (newMyEvent.Arrival - date1).TotalSeconds;

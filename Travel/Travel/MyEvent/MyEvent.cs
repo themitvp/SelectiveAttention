@@ -3,9 +3,9 @@ using SQLite;
 
 namespace Travel
 {
-	public class MyEvent
+	public class MyEvent : Item
 	{
-		public MyEvent ()
+		public MyEvent () : base()
 		{
 		}
 
@@ -16,12 +16,6 @@ namespace Travel
 			Bicycling,
 			Running
 		}
-
-		/// <summary>
-		/// Id
-		/// </summary>
-		[PrimaryKey, AutoIncrement]
-		public int Id { get; set; }
 
 		/// <summary>
 		/// Event name

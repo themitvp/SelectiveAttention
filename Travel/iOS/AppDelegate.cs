@@ -21,10 +21,10 @@ namespace Travel.iOS
 
 		public static AppDelegate Current { get; private set; }
 		public MyEventManager MyEventManager { get; set; }
+		public MyStatManager MyStatManager { get; set; }
 		SQLiteConnection conn;
 
-		private HomeViewController viewController;
-		private UINavigationController navController;
+		private TabbedHomeViewController tabController;
 
 		public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
 		{
@@ -36,6 +36,9 @@ namespace Travel.iOS
 			// make the window visible
 			Window.MakeKeyAndVisible();
 
+			// Make the font in the status bar white
+			UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent, false);
+
 			// Create the database file
 			var sqliteFilename = "MyEventsDB.db3";
 			// we need to put in /Library/ on iOS5.1 to meet Apple's iCloud terms
@@ -45,13 +48,10 @@ namespace Travel.iOS
 			var path = Path.Combine(libraryPath, sqliteFilename);
 			conn = new SQLiteConnection(path);
 			MyEventManager = new MyEventManager(conn);
+			MyStatManager = new MyStatManager(conn);
 
-
-			// create our nav controller
-			navController = new UINavigationController ();
-			viewController = new HomeViewController();
-			navController.PushViewController (viewController, false);
-			Window.RootViewController = navController;
+			tabController = new TabbedHomeViewController();
+			Window.RootViewController = tabController;
 			Window.MakeKeyAndVisible();
 
 			// Ask for permission to show local notifications
@@ -74,10 +74,10 @@ namespace Travel.iOS
 					{
 						UIAlertController okayAlertController = UIAlertController.Create (localNotification.AlertAction, localNotification.AlertBody, UIAlertControllerStyle.Alert);
 						okayAlertController.AddAction (UIAlertAction.Create ("OK", UIAlertActionStyle.Default, alert => {
-							viewController.OpenedFromNotification();
+							tabController.OpenedFromNotification();
 						}));
 
-						navController.PresentViewController (okayAlertController, true, null);
+						tabController.PresentViewController (okayAlertController, true, null);
 
 						// reset our badge
 						UIApplication.SharedApplication.ApplicationIconBadgeNumber = 0;
@@ -95,9 +95,9 @@ namespace Travel.iOS
 			// show an alert
 			UIAlertController okayAlertController = UIAlertController.Create (notification.AlertAction, notification.AlertBody, UIAlertControllerStyle.Alert);
 			okayAlertController.AddAction (UIAlertAction.Create ("OK", UIAlertActionStyle.Default, alert => {
-				viewController.OpenedFromNotification();
+				tabController.OpenedFromNotification();
 			}));
-			navController.PresentViewController (okayAlertController, true, null);
+			tabController.PresentViewController (okayAlertController, true, null);
 
 			// reset our badge
 			UIApplication.SharedApplication.ApplicationIconBadgeNumber = 0;
