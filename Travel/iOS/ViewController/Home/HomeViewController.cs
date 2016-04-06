@@ -3,6 +3,8 @@ using UIKit;
 using CoreGraphics;
 using System.Collections.ObjectModel;
 using Foundation;
+using JourneyPlanner;
+using JourneyPlanner.Model.Repository;
 using System.Linq;
 
 namespace Travel.iOS
@@ -47,6 +49,8 @@ namespace Travel.iOS
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+
+			OpenedFromNotification ();
 
 			BeginInvokeOnMainThread (delegate {
 				_homeView.listTable.Source = new HomeTableSource(this);
@@ -93,7 +97,50 @@ namespace Travel.iOS
 
 		public void OpenedFromNotification()
 		{
-			Console.WriteLine("Opened from notification");
+			var tripRequestModel = new TripRequest {
+				OriginId = "008603310",
+				DestId = "000050100",
+				Date = "30.03.16",
+				Time = "13:00"
+			};
+
+			var departureBoardRequestModel = new DepartureBoardRequest {
+				Id = "000050100",
+				Date = "30.03.16",
+				Time = "15:00"
+			};
+
+			var multiBoardRequestModel = new MultiDepartureBoardRequest {
+				Id1 = "000050100",
+				Id2 = "751446100",
+				Id3 = "000046420",
+				Date = "30.03.16",
+				Time = "15:00"
+			};
+
+			var stopsNearbyRequest = new StopsNearbyRequest {
+				CoordX = 12565796,
+				CoordY = 55673063,
+				MaxRadius = 1000,
+				MaxNumber = 30
+			};
+
+			var journeyDetailsRequest = new JourneyDetailRequest
+			{
+				DepartureBoardUrl = "http://xmlopen.rejseplanen.dk/bin/rest.exe/journeyDetail?ref=775158%2F283931%2F38946%2F238941%2F86%3Fdate%3D30.03.16%26format%3Djson%26"
+			};
+
+				
+			var trip = JourneyPlanerRepository.Get<TripRequest, TripResult> (tripRequestModel);
+
+			var departureBoard = JourneyPlanerRepository.Get<DepartureBoardRequest, DepartureBoardResult> (departureBoardRequestModel);
+
+			var multiDepartureBoard = JourneyPlanerRepository.Get<MultiDepartureBoardRequest, MultiDepartureBoardResult> (multiBoardRequestModel);
+
+			var stopsNearby = JourneyPlanerRepository.Get<StopsNearbyRequest, StopsNearbyResult> (stopsNearbyRequest);
+
+			var journeyDetails = JourneyPlanerRepository.Get<JourneyDetailsResult>(journeyDetailsRequest.DepartureBoardUrl);
+
 		}
 	}
 }

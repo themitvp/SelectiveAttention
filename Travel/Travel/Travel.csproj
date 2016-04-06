@@ -31,7 +31,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ApiProxy.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="MyEvent\MyEvent.cs" />
     <Compile Include="MyEvent\MyEventManager.cs" />
@@ -70,6 +69,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JourneyPlanner\JourneyPlanner.csproj">
+      <Project>{4EC5FEFD-A0A0-40D2-87CA-29D12D917ECB}</Project>
+      <Name>JourneyPlanner</Name>
+    </ProjectReference>
     <Folder Include="MyEvent\" />
     <Folder Include="MyStat\" />
     <Folder Include="Infrastructure\" />
