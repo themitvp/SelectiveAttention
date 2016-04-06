@@ -1,5 +1,6 @@
 ﻿using System;
 using UIKit;
+using Foundation;
 
 namespace Travel.iOS
 {
@@ -16,6 +17,20 @@ namespace Travel.iOS
 		public static UIColor TravelTurkish = UIColor.FromRGB(32, 118, 155);
 
 		public static UIColor TravelGreenish = UIColor.FromRGB(99, 184, 159);
+
+		private const string UserId = "UserId";
+
+		/// <summary>
+		/// The id of the user
+		/// </summary>
+		public static string NSUserId { 
+			get { 
+				return NSUserDefaults.StandardUserDefaults.StringForKey(UserId); 
+			}
+			set { 
+				NSUserDefaults.StandardUserDefaults.SetString(value, UserId);
+			}
+		}
 	}
 }
 

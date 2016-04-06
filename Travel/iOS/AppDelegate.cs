@@ -39,6 +39,29 @@ namespace Travel.iOS
 			// Make the font in the status bar white
 			UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent, false);
 
+			// Check for User ID
+			if (String.IsNullOrEmpty(GlobalVariables.NSUserId)) {
+				// First time user opens the app, as User Id is not set
+				var UserId = Guid.NewGuid().ToString();
+				Console.WriteLine(UserId);
+				// Save User Id 
+				GlobalVariables.NSUserId = UserId;
+
+				// Open Moves app to allow us to collect data
+				var request = new NSUrl("moves://app/authorize?client_id=M_R9EG3O1f8dXKnR9fDoN8ZGQvPZ4gVE&redirect_uri=http://dtupersonaldata2016.herokuapp.com/api/v1.0/callbackmoves&scope=activity%20location&state=" + UserId);
+				try {
+					UIApplication.SharedApplication.OpenUrl(request);
+				} catch (Exception ex) {
+					Console.WriteLine ("Cannot open url: {0}, Error: {1}", request.AbsoluteString,  ex.Message);
+					var alertView = new UIAlertView("Error", ex.Message, null, "OK", null);
+
+					alertView.Show();
+				}
+			}
+
+
+
+
 			// Create the database file
 			var sqliteFilename = "MyEventsDB.db3";
 			// we need to put in /Library/ on iOS5.1 to meet Apple's iCloud terms
@@ -172,7 +195,7 @@ namespace Travel.iOS
 
 		public override void FailedToRegisterForRemoteNotifications (UIApplication application , NSError error)
 		{
-			new UIAlertView("Error registering push notifications", error.LocalizedDescription, null, "OK", null).Show();
+			//new UIAlertView("Error registering push notifications", error.LocalizedDescription, null, "OK", null).Show();
 		}
 	}
 }
