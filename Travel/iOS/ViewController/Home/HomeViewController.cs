@@ -52,7 +52,7 @@ namespace Travel.iOS
 		{
 			base.ViewDidLoad ();
 
-			OpenedFromNotification ();
+			//OpenedFromNotification ();
 
 			BeginInvokeOnMainThread (delegate {
 				_homeView.listTable.Source = new HomeTableSource(this);
@@ -99,7 +99,7 @@ namespace Travel.iOS
 
 		public void OpenedFromNotification()
 		{
-			var tripRequestModel = new TripRequest {
+			/*var tripRequestModel = new TripRequest {
 				OriginId = "008603310",
 				DestId = "000050100",
 				Date = "30.03.16",
@@ -132,19 +132,6 @@ namespace Travel.iOS
 				DepartureBoardUrl = "http://xmlopen.rejseplanen.dk/bin/rest.exe/journeyDetail?ref=775158%2F283931%2F38946%2F238941%2F86%3Fdate%3D30.03.16%26format%3Djson%26"
 			};
 
-
-
-			var authenticationRequest = new AuthenticationRequest {
-				UserId = Guid.NewGuid()
-			};
-
-
-
-			var authResult = PersonalDataApiRepository.Get<AuthenticationRequest,AuthenticationResponse> (authenticationRequest);
-
-
-
-
 				
 			var trip = JourneyPlanerRepository.Get<TripRequest, TripResult> (tripRequestModel);
 
@@ -155,7 +142,7 @@ namespace Travel.iOS
 			var stopsNearby = JourneyPlanerRepository.Get<StopsNearbyRequest, StopsNearbyResult> (stopsNearbyRequest);
 
 			var journeyDetails = JourneyPlanerRepository.Get<JourneyDetailsResult>(journeyDetailsRequest.DepartureBoardUrl);
-
+			*/
 		}
 	}
 }

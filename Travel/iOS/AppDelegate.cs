@@ -4,6 +4,7 @@ using UIKit;
 using System;
 using System.IO;
 using SQLite;
+using PersonalDataApi;
 
 namespace Travel.iOS
 {
@@ -42,13 +43,19 @@ namespace Travel.iOS
 			// Check for User ID
 			if (String.IsNullOrEmpty(GlobalVariables.NSUserId)) {
 				// First time user opens the app, as User Id is not set
-				var UserId = Guid.NewGuid().ToString();
+				var UserId = Guid.NewGuid();
 				Console.WriteLine(UserId);
 				// Save User Id 
-				GlobalVariables.NSUserId = UserId;
+				GlobalVariables.NSUserId = UserId.ToString();
+
+				var authenticationRequest = new AuthenticationRequest {
+					UserId = UserId
+				};
+
+				var authResult = PersonalDataApiRepository.Get<AuthenticationRequest,AuthenticationResponse> (authenticationRequest);
 
 				// Open Moves app to allow us to collect data
-				var request = new NSUrl("moves://app/authorize?client_id=M_R9EG3O1f8dXKnR9fDoN8ZGQvPZ4gVE&redirect_uri=http://dtupersonaldata2016.herokuapp.com/api/v1.0/callbackmoves&scope=activity%20location&state=" + UserId);
+				var request = new NSUrl(authResult.Url);
 				try {
 					UIApplication.SharedApplication.OpenUrl(request);
 				} catch (Exception ex) {
