@@ -62,8 +62,8 @@ namespace Travel.iOS
 				icon.Image = UIImage.FromBundle("TimeSpent");
 				break;
 			case MyStat.StatType.Suggestion:
-				numberLabel.TextColor = GlobalVariables.TravelGreen;
-				icon.Image = UIImage.FromBundle("Sleep");
+				numberLabel.TextColor = GlobalVariables.TravelGreenish;
+				icon.Image = UIImage.FromBundle("bike");
 				break;
 			}
 

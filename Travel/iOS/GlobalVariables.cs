@@ -15,7 +15,7 @@ namespace Travel.iOS
 
 		public static UIColor TravelTurkish = UIColor.FromRGB(32, 118, 155);
 
-		public static UIColor TravelPurple = UIColor.FromRGB(0x67, 0x3a, 0xb7); //#673ab7
+		public static UIColor TravelGreenish = UIColor.FromRGB(99, 184, 159);
 	}
 }
 
