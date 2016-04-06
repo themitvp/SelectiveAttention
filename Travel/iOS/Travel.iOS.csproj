@@ -27,7 +27,6 @@
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Developer: Mikkel Romer (SFGA2P85ND)</CodesignKey>
     <MtouchProfiling>true</MtouchProfiling>
-    <CodesignProvision>3552a17b-fac7-4ba9-8fe4-d59adb38923e</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -99,6 +98,10 @@
     <ProjectReference Include="..\HttpClientFramework\HttpClientFramework.csproj">
       <Project>{C03C56B4-6323-42D7-B881-BC27B8E9AC53}</Project>
       <Name>HttpClientFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PersonalDataApi\PersonalDataApi.csproj">
+      <Project>{33DDD0D2-598F-474A-ADF1-CBAF6045F5E7}</Project>
+      <Name>PersonalDataApi</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

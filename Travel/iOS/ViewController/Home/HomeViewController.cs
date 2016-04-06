@@ -5,6 +5,8 @@ using System.Collections.ObjectModel;
 using Foundation;
 using JourneyPlanner;
 using JourneyPlanner.Model.Repository;
+using PersonalDataApi;
+
 using System.Linq;
 
 namespace Travel.iOS
@@ -129,6 +131,19 @@ namespace Travel.iOS
 			{
 				DepartureBoardUrl = "http://xmlopen.rejseplanen.dk/bin/rest.exe/journeyDetail?ref=775158%2F283931%2F38946%2F238941%2F86%3Fdate%3D30.03.16%26format%3Djson%26"
 			};
+
+
+
+			var authenticationRequest = new AuthenticationRequest {
+				UserId = Guid.NewGuid()
+			};
+
+
+
+			var authResult = PersonalDataApiRepository.Get<AuthenticationRequest,AuthenticationResponse> (authenticationRequest);
+
+
+
 
 				
 			var trip = JourneyPlanerRepository.Get<TripRequest, TripResult> (tripRequestModel);
