@@ -124,13 +124,13 @@
     <Compile Include="ViewController\Home\HomeViewController.cs" />
     <Compile Include="ViewController\Event\SearchResultTableController.cs" />
     <Compile Include="View\Event\PickerModel.cs" />
-    <Compile Include="View\Home\HomeTableSource.cs" />
     <Compile Include="ViewController\TabbedHome\TabbedHomeViewController.cs" />
     <Compile Include="ViewController\Stats\StatsViewController.cs" />
     <Compile Include="View\Stats\StatsView.cs" />
     <Compile Include="View\Stats\StatsTableCell.cs" />
     <Compile Include="ViewController\Stats\StatsTableSource.cs" />
     <Compile Include="ViewController\TabbedHome\NavigationController.cs" />
+    <Compile Include="ViewController\Home\HomeTableSource.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\SQLitePCL.raw.0.8.6\build\Xamarin.iOS10\SQLitePCL.raw.targets" Condition="Exists('..\packages\SQLitePCL.raw.0.8.6\build\Xamarin.iOS10\SQLitePCL.raw.targets')" />
@@ -164,5 +164,23 @@
     <BundleResource Include="Resources\bike%403x.png" />
     <BundleResource Include="Resources\bike%402x.png" />
     <BundleResource Include="Resources\bike.png" />
+    <BundleResource Include="Resources\car.png" />
+    <BundleResource Include="Resources\car%402x.png" />
+    <BundleResource Include="Resources\car%403x.png" />
+    <BundleResource Include="Resources\walking.png" />
+    <BundleResource Include="Resources\walking%402x.png" />
+    <BundleResource Include="Resources\walking%403x.png" />
+    <BundleResource Include="Resources\train.png" />
+    <BundleResource Include="Resources\train%402x.png" />
+    <BundleResource Include="Resources\train%403x.png" />
+    <BundleResource Include="Resources\clock.png" />
+    <BundleResource Include="Resources\clock%402x.png" />
+    <BundleResource Include="Resources\clock%403x.png" />
+    <BundleResource Include="Resources\earth.png" />
+    <BundleResource Include="Resources\earth%402x.png" />
+    <BundleResource Include="Resources\earth%403x.png" />
+    <BundleResource Include="Resources\filter.png" />
+    <BundleResource Include="Resources\filter%402x.png" />
+    <BundleResource Include="Resources\filter%403x.png" />
   </ItemGroup>
 </Project>

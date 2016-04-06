@@ -66,9 +66,6 @@ namespace Travel.iOS
 				}
 			}
 
-
-
-
 			// Create the database file
 			var sqliteFilename = "MyEventsDB.db3";
 			// we need to put in /Library/ on iOS5.1 to meet Apple's iCloud terms

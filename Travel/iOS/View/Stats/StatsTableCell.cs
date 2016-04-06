@@ -63,7 +63,7 @@ namespace Travel.iOS
 				break;
 			case MyStat.StatType.Suggestion:
 				numberLabel.TextColor = GlobalVariables.TravelGreenish;
-				icon.Image = UIImage.FromBundle("bike");
+				icon.Image = UIImage.FromBundle("car");
 				break;
 			}
 

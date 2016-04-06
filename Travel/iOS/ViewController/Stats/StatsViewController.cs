@@ -43,6 +43,23 @@ namespace Travel.iOS
 		{
 			base.ViewWillAppear (animated);
 
+			this.NavigationItem.SetRightBarButtonItem(
+				new UIBarButtonItem(UIImage.FromBundle("filter")
+					, UIBarButtonItemStyle.Plain
+					, (sender,args) => {
+					// button was clicked
+					var options = new UIActionSheet();
+					options.Title = "Filter: Select period";
+					options.AddButton("This Week");
+					options.AddButton("This Month");
+					options.AddButton("All");
+					options.AddButton("Cancel");
+
+					options.CancelButtonIndex = 3;  // black (Cancel)
+					options.ShowInView(this.View);
+				})
+				, true);
+
 			PopulateTable();
 		}
 
