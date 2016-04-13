@@ -50,7 +50,7 @@ namespace Travel.iOS
 							Destination = cont.checkedMapItem.Name,
 							Latitude = cont.checkedMapItem.Placemark.Coordinate.Latitude,
 							Longitude = cont.checkedMapItem.Placemark.Coordinate.Longitude,
-							Type = _addEventView.selectedTypeOfTransport
+							TravelType = _addEventView.selectedTypeOfTransport
 						};
 
 						parent.SaveMyEvent(newEvent);

@@ -31,7 +31,7 @@ namespace Travel
 		/// <summary>
 		/// Type of transportation
 		/// </summary>
-		public TravelTypes Type { get; set; }
+		public TravelTypes TravelType { get; set; }
 
 		/// <summary>
 		/// Latitude for destination

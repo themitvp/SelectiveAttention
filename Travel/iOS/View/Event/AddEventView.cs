@@ -93,7 +93,12 @@ namespace Travel.iOS
 
 			List<object> typeOptions = new List<object>();
 
-			typeOptions = Enum.GetValues(typeof(TravelTypes)).Cast<TravelTypes>().Select(v => v.ToString()).ToList<object>();
+			typeOptions.Add(TravelTypes.PublicTransport);
+			typeOptions.Add(TravelTypes.Car);
+			typeOptions.Add(TravelTypes.Bicycle);
+			typeOptions.Add(TravelTypes.Run);
+			typeOptions.Add(TravelTypes.Walk);
+			typeOptions.Add(TravelTypes.Total);
 
 			type_model = new PickerModel(typeOptions);
 
