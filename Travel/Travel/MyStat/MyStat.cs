@@ -9,6 +9,8 @@ namespace Travel
 		Delays,
 		DelayHighScore,
 		MostUsed,
+		TimeAtPlace,
+		EachDay,
 		Fun
 	}
 
@@ -32,6 +34,11 @@ namespace Travel
 		/// Stat description
 		/// </summary>
 		public string Description { get; set; }
+
+		/// <summary>
+		/// Stat description
+		/// </summary>
+		public string Weekday { get; set; }
 
 		/// <summary>
 		/// Stat description
