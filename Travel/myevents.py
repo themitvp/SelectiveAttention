@@ -14,7 +14,8 @@ myevents = [
 	"Destination" : "Adressen 27, 2200 Byen",
 	"Latitude" : 55.7861419709109,
 	"Longitude" : 12.5240707397461,
-	"Arrival" : "4/13/2016 2:01:22 PM", #DateTime, maybe it should be different
+	"StartTime" : "08:20-08:30", 
+	"EndTime" : "12:20-12:30", 
 	"TravelType" : "Walk", # What type of transportation was used to arrive to this location
 	"PlaceTypes" : "Home"	# Home, Work or School.
 }
