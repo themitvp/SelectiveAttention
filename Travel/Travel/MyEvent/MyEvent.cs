@@ -47,6 +47,11 @@ namespace Travel
 		/// Date for arrival at destination
 		/// </summary>
 		public DateTime Arrival { get; set; }
+
+		/// <summary>
+		/// Different types of places
+		/// </summary>
+		public PlaceTypes? PlaceType { get; set; }
 	}
 }
 

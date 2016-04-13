@@ -15,6 +15,12 @@ namespace Travel
 		Fun
 	}
 
+	public enum PlaceTypes {
+		Home,
+		Work,
+		School
+	}
+
 	public class MyStat : Item
 	{
 		public MyStat() : base()
@@ -42,14 +48,20 @@ namespace Travel
 		public string Weekday { get; set; }
 
 		/// <summary>
-		/// Stat description
+		/// Different types of transportation
 		/// </summary>
 		public TravelTypes? TravelType  { get; set; }
 
 		/// <summary>
-		/// Different types
+		/// Different types of statistics
 		/// </summary>
 		public StatTypes? StatType { get; set; }
+
+		/// <summary>
+		/// Different types of places
+		/// </summary>
+		public PlaceTypes? PlaceType { get; set; }
+
 	}
 }
 

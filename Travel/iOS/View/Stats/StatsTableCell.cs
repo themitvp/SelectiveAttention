@@ -88,14 +88,32 @@ namespace Travel.iOS
 				// Border Color
 				//sideBorder.BackgroundColor = GlobalVariables.TravelTurkish;
 				break;
+			case StatTypes.Delays:
+			case StatTypes.DelayHighScore:
+				icon.Image = UIImage.FromBundle("clock");
+				break;
+			case StatTypes.MostUsed:
+				icon.Image = UIImage.FromBundle("mostUsed");
+				break;
 			case StatTypes.TimeAtPlace:
 				//sideBorder.BackgroundColor = GlobalVariables.TravelTurkish;
+
+				switch (stat.PlaceType) {
+				case PlaceTypes.Home:
+					icon.Image = UIImage.FromBundle("home");
+					break;
+				case PlaceTypes.Work:
+					icon.Image = UIImage.FromBundle("work");
+					break;
+				case PlaceTypes.School:
+					icon.Image = UIImage.FromBundle("school");
+					break;
+				}	
 				break;
 			case StatTypes.EachDay:
-				//sideBorder.BackgroundColor = GlobalVariables.TravelBlue;
+				icon.Image = UIImage.FromBundle("calender");
 				break;
 			case StatTypes.Fun:
-				
 				// Checking travel type
 				switch (stat.TravelType) 
 				{
@@ -132,7 +150,7 @@ namespace Travel.iOS
 			metricsLabel.SizeToFit();
 			metricsLabel.Frame = new CGRect (numberLabel.Frame.Right + padding/2, numberLabel.Frame.Bottom - metricsLabel.Frame.Height - 3, metricsLabel.Frame.Width, metricsLabel.Frame.Height);
 
-			descriptionLabel.Frame = new CGRect (padding, metricsLabel.Frame.Bottom + padding/2, ContentView.Bounds.Width - padding*2, 0);
+			descriptionLabel.Frame = new CGRect (padding+3, metricsLabel.Frame.Bottom + padding/2, ContentView.Bounds.Width - padding*2, 0);
 			descriptionLabel.SizeToFit();
 		}
 	}

@@ -188,5 +188,20 @@
     <BundleResource Include="Resources\location.png" />
     <BundleResource Include="Resources\location%402x.png" />
     <BundleResource Include="Resources\location%403x.png" />
+    <BundleResource Include="Resources\mostUsed.png" />
+    <BundleResource Include="Resources\mostUsed%402x.png" />
+    <BundleResource Include="Resources\mostUsed%403x.png" />
+    <BundleResource Include="Resources\calender.png" />
+    <BundleResource Include="Resources\calender%402x.png" />
+    <BundleResource Include="Resources\calender%403x.png" />
+    <BundleResource Include="Resources\home.png" />
+    <BundleResource Include="Resources\home%402x.png" />
+    <BundleResource Include="Resources\home%403x.png" />
+    <BundleResource Include="Resources\school.png" />
+    <BundleResource Include="Resources\school%402x.png" />
+    <BundleResource Include="Resources\school%403x.png" />
+    <BundleResource Include="Resources\work.png" />
+    <BundleResource Include="Resources\work%402x.png" />
+    <BundleResource Include="Resources\work%403x.png" />
   </ItemGroup>
 </Project>

@@ -111,10 +111,27 @@ namespace Travel.iOS
 				Number = 14,
 				Metric = "days",
 				Description = "spent at Home",
-				StatType = StatTypes.TimeAtPlace
+				StatType = StatTypes.TimeAtPlace,
+				PlaceType = PlaceTypes.Home
 			};
 
 			var newStat7 = new MyStat() {
+				Number = 7,
+				Metric = "days",
+				Description = "spent at Work",
+				StatType = StatTypes.TimeAtPlace,
+				PlaceType = PlaceTypes.Work
+			};
+
+			var newStat8 = new MyStat() {
+				Number = 22,
+				Metric = "days",
+				Description = "spent at School",
+				StatType = StatTypes.TimeAtPlace,
+				PlaceType = PlaceTypes.School
+			};
+
+			var newStat9 = new MyStat() {
 				Number = 80,
 				Metric = "%",
 				Weekday = "Monday",
@@ -122,7 +139,7 @@ namespace Travel.iOS
 				StatType = StatTypes.EachDay
 			};
 
-			var newStat8 = new MyStat() {
+			var newStat10 = new MyStat() {
 				Number = 15,
 				Metric = "min.",
 				Description = "could have been saved with bicycle instead of public transport",
@@ -130,7 +147,7 @@ namespace Travel.iOS
 				TravelType = TravelTypes.Bicycle
 			};
 
-			var newStat9 = new MyStat() {
+			var newStat11 = new MyStat() {
 				Number = 6132,
 				Metric = "km",
 				Description = "left and you have walked The Great Wall of China",
@@ -147,6 +164,8 @@ namespace Travel.iOS
 			statList.Add(newStat7);
 			statList.Add(newStat8);
 			statList.Add(newStat9);
+			statList.Add(newStat10);
+			statList.Add(newStat11);
 
 			foreach (var i in statsDB) {
 				statList.Add(i);

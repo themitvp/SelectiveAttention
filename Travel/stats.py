@@ -19,6 +19,12 @@ TravelTypes {
 	Total
 }
 
+PlaceTypes {
+	Home,
+	Work,
+	School
+}
+
 Stats = [
 {
 	"Number" : 320,
@@ -58,6 +64,7 @@ Stats = [
 {
 	"Number" : 14,
 	"Metric" : "days",
+	"PlaceTypes" : "Home",	# Home, Work or School.
 	"Description" : "spent at [location]",
 	"StatType" : "TimeAtPlace",
 	"TravelType" : ""	# Not used
@@ -65,6 +72,7 @@ Stats = [
 {
 	"Number" : 80,
 	"Metric" : "%",
+	"PlaceTypes" : "Home",	# Home, Work or School.
 	"Weekday" : "Monday",
 	"Description" : "of all Mondays you spent at [location]",
 	"StatType" : "EachDay",
@@ -78,7 +86,7 @@ Stats = [
 	"TravelType" : "Bicycle"
 },
 {
-	"Number" : 6132, #TOTAL: 6430 km
+	"Number" : 6132,	#TOTAL: 6430 km
 	"Metric" : "km",
 	"Description" : "left and you have walked The Great Wall of China",
 	"StatType" : "Fun",
