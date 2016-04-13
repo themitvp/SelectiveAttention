@@ -3,18 +3,19 @@ using SQLite;
 
 namespace Travel
 {
+	public enum TravelTypes {
+		PublicTransport,
+		Car,
+		Walk,
+		Bicycle,
+		Run,
+		Total
+	}
+
 	public class MyEvent : Item
 	{
 		public MyEvent () : base()
 		{
-		}
-
-		public enum TravelType {
-			PublicTransport,
-			Car,
-			Walking,
-			Bicycling,
-			Running
 		}
 
 		/// <summary>
@@ -30,7 +31,7 @@ namespace Travel
 		/// <summary>
 		/// Type of transportation
 		/// </summary>
-		public TravelType Type { get; set; }
+		public TravelTypes Type { get; set; }
 
 		/// <summary>
 		/// Latitude for destination

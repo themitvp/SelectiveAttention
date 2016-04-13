@@ -71,22 +71,25 @@ namespace Travel.iOS
 			var newStat = new MyStat() {
 				Number = 320,
 				Metric = "min.",
-				Description = "Spent on traveling",
-				Type = MyStat.StatType.TimeSpent
+				Description = "Spent in public transport",
+				StatType = StatTypes.TravelTime,
+				TravelType = TravelTypes.PublicTransport
 			};
 
 			var newStat2 = new MyStat() {
 				Number = 60,
 				Metric = "min.",
 				Description = "Could have saved a lot of time if you went another route",
-				Type = MyStat.StatType.TimeSaved
+				StatType = StatTypes.TravelTime,
+				TravelType = TravelTypes.Bicycle
 			};
 
 			var newStat3 = new MyStat() {
-				Number = 25,
-				Metric = "min.",
-				Description = "More in bed if you bike 5 km to work",
-				Type = MyStat.StatType.Suggestion
+				Number = 6532,
+				Metric = "km",
+				Description = "left and you have walked The Great Wall of China",
+				StatType = StatTypes.Fun,
+				TravelType = TravelTypes.Walk
 			};
 
 			statList.Add(newStat);

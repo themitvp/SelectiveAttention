@@ -51,19 +51,50 @@ namespace Travel.iOS
 			metricsLabel.Text = stat.Metric;
 			descriptionLabel.Text = stat.Description;
 
-			switch (stat.Type) 
+			// Default Image
+			icon.Image = UIImage.FromBundle("location");
+
+			switch (stat.StatType) 
 			{
-			case MyStat.StatType.TimeSaved:
-				numberLabel.TextColor = GlobalVariables.TravelGreen;
-				icon.Image = UIImage.FromBundle("TimeSaved");
+			case StatTypes.TravelTime:
+				//numberLabel.TextColor = GlobalVariables.TravelGreen;
+
+				// Checking travel type
+				switch (stat.TravelType) 
+				{
+				case TravelTypes.Car:
+					icon.Image = UIImage.FromBundle("car");
+					break;
+				case TravelTypes.Walk:
+				case TravelTypes.Run:
+					icon.Image = UIImage.FromBundle("walking");
+					break;
+				case TravelTypes.Bicycle:
+					icon.Image = UIImage.FromBundle("bike");
+					break;
+				case TravelTypes.PublicTransport:
+					icon.Image = UIImage.FromBundle("train");
+					break;
+				}
 				break;
-			case MyStat.StatType.TimeSpent:
-				numberLabel.TextColor = GlobalVariables.TravelTurkish;
+			case StatTypes.TravelDistance:
+				//numberLabel.TextColor = GlobalVariables.TravelTurkish;
 				icon.Image = UIImage.FromBundle("TimeSpent");
 				break;
-			case MyStat.StatType.Suggestion:
-				numberLabel.TextColor = GlobalVariables.TravelGreenish;
-				icon.Image = UIImage.FromBundle("car");
+			case StatTypes.Fun:
+				//numberLabel.TextColor = GlobalVariables.TravelGreenish;
+
+				// Checking travel type
+				switch (stat.TravelType) 
+				{
+				case TravelTypes.Walk:
+				case TravelTypes.Run:
+					icon.Image = UIImage.FromBundle("great_wall");
+					break;
+				case TravelTypes.Total:
+					icon.Image = UIImage.FromBundle("earth");
+					break;
+				}
 				break;
 			}
 

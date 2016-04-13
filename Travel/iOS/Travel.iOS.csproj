@@ -182,5 +182,11 @@
     <BundleResource Include="Resources\filter.png" />
     <BundleResource Include="Resources\filter%402x.png" />
     <BundleResource Include="Resources\filter%403x.png" />
+    <BundleResource Include="Resources\great_wall.png" />
+    <BundleResource Include="Resources\great_wall%402x.png" />
+    <BundleResource Include="Resources\great_wall%403x.png" />
+    <BundleResource Include="Resources\location.png" />
+    <BundleResource Include="Resources\location%402x.png" />
+    <BundleResource Include="Resources\location%403x.png" />
   </ItemGroup>
 </Project>

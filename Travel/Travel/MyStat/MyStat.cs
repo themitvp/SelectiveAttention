@@ -3,18 +3,19 @@ using SQLite;
 
 namespace Travel
 {
+	public enum StatTypes {
+		TravelTime,
+		TravelDistance,
+		Delays,
+		DelayHighScore,
+		MostUsed,
+		Fun
+	}
+
 	public class MyStat : Item
 	{
 		public MyStat() : base()
 		{
-		}
-
-		public enum StatType {
-			TimeSpent,
-			TimeSaved,
-			Overcame,
-			CouldSave,
-			Suggestion,
 		}
 
 		/// <summary>
@@ -33,9 +34,14 @@ namespace Travel
 		public string Description { get; set; }
 
 		/// <summary>
+		/// Stat description
+		/// </summary>
+		public TravelTypes TravelType  { get; set; }
+
+		/// <summary>
 		/// Different types
 		/// </summary>
-		public StatType Type { get; set; }
+		public StatTypes StatType { get; set; }
 	}
 }
 

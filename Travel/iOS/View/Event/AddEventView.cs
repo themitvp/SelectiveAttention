@@ -4,6 +4,7 @@ using CoreGraphics;
 using Foundation;
 using System.Collections.Generic;
 using CoreAnimation;
+using System.Linq;
 
 namespace Travel.iOS
 {
@@ -24,7 +25,7 @@ namespace Travel.iOS
 
 		public UITextField typeOfTransport, direction;
 		public UITableView searchResultTable;
-		public MyEvent.TravelType selectedTypeOfTransport;
+		public TravelTypes selectedTypeOfTransport;
 		public AddEventView (CGRect frame, UIViewController parent) : base (frame)
 		{
 			this.BackgroundColor = UIColor.White;
@@ -92,11 +93,7 @@ namespace Travel.iOS
 
 			List<object> typeOptions = new List<object>();
 
-			typeOptions.Add(MyEvent.TravelType.PublicTransport);
-			typeOptions.Add(MyEvent.TravelType.Car);
-			typeOptions.Add(MyEvent.TravelType.Bicycling);
-			typeOptions.Add(MyEvent.TravelType.Running);
-			typeOptions.Add(MyEvent.TravelType.Walking);
+			typeOptions = Enum.GetValues(typeof(TravelTypes)).Cast<TravelTypes>().Select(v => v.ToString()).ToList<object>();
 
 			type_model = new PickerModel(typeOptions);
 
@@ -117,7 +114,7 @@ namespace Travel.iOS
 			});
 
 			UIBarButtonItem typeDoneButton = new UIBarButtonItem("Done", UIBarButtonItemStyle.Done, (s,e) => {
-				selectedTypeOfTransport = (MyEvent.TravelType)type_model.values[(int)typePicker.SelectedRowInComponent (0)];
+				selectedTypeOfTransport = (TravelTypes)type_model.values[(int)typePicker.SelectedRowInComponent (0)];
 				typeOfTransport.Text = selectedTypeOfTransport.ToString();
 				typeOfTransport.ResignFirstResponder();
 			});
