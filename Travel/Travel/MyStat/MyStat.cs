@@ -11,6 +11,7 @@ namespace Travel
 		MostUsed,
 		TimeAtPlace,
 		EachDay,
+		Suggestion,
 		Fun
 	}
 

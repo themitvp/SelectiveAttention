@@ -123,6 +123,14 @@ namespace Travel.iOS
 			};
 
 			var newStat8 = new MyStat() {
+				Number = 15,
+				Metric = "min.",
+				Description = "could have been saved with bicycle instead of public transport",
+				StatType = StatTypes.Suggestion,
+				TravelType = TravelTypes.Bicycle
+			};
+
+			var newStat9 = new MyStat() {
 				Number = 6132,
 				Metric = "km",
 				Description = "left and you have walked The Great Wall of China",

@@ -6,6 +6,7 @@ StatTypes {
 	MostUsed,
 	TimeAtPlace,
 	EachDay,
+	Suggestion,
 	Fun
 }
 
@@ -64,10 +65,17 @@ Stats = [
 {
 	"Number" : 80,
 	"Metric" : "%",
-	"Weekday" : "Monday"
+	"Weekday" : "Monday",
 	"Description" : "of all Mondays you spent at [location]",
 	"StatType" : "EachDay",
 	"TravelType" : ""	# Not used
+},
+{
+	"Number" : 15,
+	"Metric" : "min.",
+	"Description" : "could have been saved with bicycle instead of public transport",
+	"StatType" : "Suggestion",
+	"TravelType" : "Bicycle"
 },
 {
 	"Number" : 6132, #TOTAL: 6430 km
