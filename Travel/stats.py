@@ -65,7 +65,7 @@ Stats = [
 	"Number" : 80,
 	"Metric" : "%",
 	"Weekday" : "Monday"
-	"Description" : "of [weekday] at [location]",
+	"Description" : "of all Mondays you spent at [location]",
 	"StatType" : "EachDay",
 	"TravelType" : ""	# Not used
 },
