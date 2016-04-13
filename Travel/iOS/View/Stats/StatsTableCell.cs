@@ -10,22 +10,22 @@ namespace Travel.iOS
 	{
 		private UILabel numberLabel, metricsLabel, descriptionLabel;
 		private UIImageView icon;
-		private UIView card;
+		private UIView card, sideBorder;
 
 		public StatsTableCell(IntPtr p) : base (p)
 		{
 			BackgroundColor = GlobalVariables.TravelLightGray;
 
 			numberLabel = new UILabel () {
-				Font = UIFont.FromName("HelveticaNeue", 45f)
+				Font = UIFont.FromName("HelveticaNeue-Thin", 50f)
 			};
 
 			metricsLabel = new UILabel () {
-				Font = UIFont.FromName("HelveticaNeue", 45f)
+				Font = UIFont.FromName("HelveticaNeue-Thin", 32f)
 			};
 
 			descriptionLabel = new UILabel () {
-				Font = UIFont.FromName("HelveticaNeue", 20f),
+				Font = UIFont.FromName("HelveticaNeue", 18f),
 				LineBreakMode = UILineBreakMode.WordWrap,
 				Lines = 0
 			};
@@ -35,9 +35,13 @@ namespace Travel.iOS
 			card = new UIView();
 			card.BackgroundColor = UIColor.White;
 
+			sideBorder = new UIView();
+			sideBorder.BackgroundColor = GlobalVariables.TravelTurkish;
+
 			// Add to Cell view
 			ContentView.AddSubviews(new UIView[] {
 				card,
+				sideBorder,
 				numberLabel,
 				metricsLabel,
 				descriptionLabel,
@@ -51,17 +55,9 @@ namespace Travel.iOS
 			metricsLabel.Text = stat.Metric;
 			descriptionLabel.Text = stat.Description;
 
-			// Default Image
-			icon.Image = UIImage.FromBundle("location");
-
-			switch (stat.StatType) 
-			{
-			case StatTypes.TravelTime:
-				//numberLabel.TextColor = GlobalVariables.TravelGreen;
-
-				// Checking travel type
-				switch (stat.TravelType) 
-				{
+			// Check travel type
+			//if (stat.TravelType != null) {
+				switch (stat.TravelType) {
 				case TravelTypes.Car:
 					icon.Image = UIImage.FromBundle("car");
 					break;
@@ -75,15 +71,31 @@ namespace Travel.iOS
 				case TravelTypes.PublicTransport:
 					icon.Image = UIImage.FromBundle("train");
 					break;
+			default:
+				icon.Image = UIImage.FromBundle("location");
+				break;
 				}
+			//}
+
+			// Check for type of statistic
+			switch (stat.StatType) 
+			{
+			case StatTypes.TravelTime:
+				// Border Color
+				//sideBorder.BackgroundColor = GlobalVariables.TravelGreenish;
 				break;
 			case StatTypes.TravelDistance:
-				//numberLabel.TextColor = GlobalVariables.TravelTurkish;
-				icon.Image = UIImage.FromBundle("TimeSpent");
+				// Border Color
+				//sideBorder.BackgroundColor = GlobalVariables.TravelTurkish;
+				break;
+			case StatTypes.TimeAtPlace:
+				//sideBorder.BackgroundColor = GlobalVariables.TravelTurkish;
+				break;
+			case StatTypes.EachDay:
+				//sideBorder.BackgroundColor = GlobalVariables.TravelBlue;
 				break;
 			case StatTypes.Fun:
-				//numberLabel.TextColor = GlobalVariables.TravelGreenish;
-
+				
 				// Checking travel type
 				switch (stat.TravelType) 
 				{
@@ -97,7 +109,6 @@ namespace Travel.iOS
 				}
 				break;
 			}
-
 		}
 
 		public override void LayoutSubviews ()
@@ -107,18 +118,21 @@ namespace Travel.iOS
 			var padding = 20;
 			var iconSize = 50;
 			var cardPadding = 5;
+			var sideBorderWidth = 5;
 
-			icon.Frame = new CGRect (ContentView.Bounds.Width - iconSize - padding, (ContentView.Bounds.Height - iconSize)/2, iconSize, iconSize);
+			icon.Frame = new CGRect (ContentView.Bounds.Width - iconSize - padding, padding, iconSize, iconSize);
 
 			card.Frame = new CGRect(0, cardPadding, ContentView.Bounds.Width, ContentView.Bounds.Height - cardPadding);
+
+			sideBorder.Frame = new CGRect(0, card.Frame.Y, sideBorderWidth, card.Frame.Height);
 
 			numberLabel.SizeToFit();
 			numberLabel.Frame = new CGRect (padding, padding, numberLabel.Frame.Width, numberLabel.Frame.Height);
 
 			metricsLabel.SizeToFit();
-			metricsLabel.Frame = new CGRect (numberLabel.Frame.Right + padding/2, numberLabel.Frame.Y, metricsLabel.Frame.Width, metricsLabel.Frame.Height);
+			metricsLabel.Frame = new CGRect (numberLabel.Frame.Right + padding/2, numberLabel.Frame.Bottom - metricsLabel.Frame.Height - 3, metricsLabel.Frame.Width, metricsLabel.Frame.Height);
 
-			descriptionLabel.Frame = new CGRect (padding, metricsLabel.Frame.Bottom + padding/2, icon.Frame.X - padding, 0);
+			descriptionLabel.Frame = new CGRect (padding, metricsLabel.Frame.Bottom + padding/2, ContentView.Bounds.Width - padding*2, 0);
 			descriptionLabel.SizeToFit();
 		}
 	}

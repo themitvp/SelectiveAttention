@@ -44,12 +44,12 @@ namespace Travel
 		/// <summary>
 		/// Stat description
 		/// </summary>
-		public TravelTypes TravelType  { get; set; }
+		public TravelTypes? TravelType  { get; set; }
 
 		/// <summary>
 		/// Different types
 		/// </summary>
-		public StatTypes StatType { get; set; }
+		public StatTypes? StatType { get; set; }
 	}
 }
 

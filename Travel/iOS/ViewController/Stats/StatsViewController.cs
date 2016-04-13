@@ -146,6 +146,7 @@ namespace Travel.iOS
 			statList.Add(newStat6);
 			statList.Add(newStat7);
 			statList.Add(newStat8);
+			statList.Add(newStat9);
 
 			foreach (var i in statsDB) {
 				statList.Add(i);
