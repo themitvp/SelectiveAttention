@@ -8,7 +8,7 @@ namespace Travel.iOS
 	public class HomeTableSource : UITableViewSource
 	{
 		private HomeViewController parent;
-		string HomeCellId = "HomeId";
+		static NSString HomeCellId = new NSString ("HomeCellId");
 
 		public HomeTableSource(HomeViewController parent)
 		{
@@ -30,16 +30,20 @@ namespace Travel.iOS
 			return TableItems.Count;
 		}
 
+		// Changes the height of the row dynamically
+		public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
+		{
+			return 100f;
+		}
+
 		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 		{
-			UITableViewCell cell = tableView.DequeueReusableCell (HomeCellId);
+			var cell = (HomeTableCell) tableView.DequeueReusableCell(HomeCellId, indexPath);
 
-			if (cell == null) {
-				cell = new UITableViewCell(UITableViewCellStyle.Subtitle, HomeCellId);
-			}
+			var item = TableItems[indexPath.Row];
 
-			cell.TextLabel.Text = TableItems[indexPath.Row].Destination;
- 			cell.DetailTextLabel.Text = TableItems[indexPath.Row].Arrival.ToString();
+			// Add text to cell
+			cell.UpdateCell(item);
 
 			return cell;
 		}
@@ -51,6 +55,11 @@ namespace Travel.iOS
 			var item = TableItems[indexPath.Row];
 
 			tableView.DeselectRow(indexPath, true); // normal iOS behaviour is to remove the blue highlight
+		}
+
+		public override string TitleForHeader (UITableView tableView, nint section)
+		{
+			return "Monday";
 		}
 	}
 }

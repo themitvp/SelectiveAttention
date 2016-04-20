@@ -31,7 +31,7 @@ namespace Travel
 		/// <summary>
 		/// Type of transportation
 		/// </summary>
-		public TravelTypes TravelType { get; set; }
+		public TravelTypes? TravelType { get; set; }
 
 		/// <summary>
 		/// Latitude for destination
@@ -44,9 +44,14 @@ namespace Travel
 		public double Longitude { get; set; }
 
 		/// <summary>
-		/// Date for arrival at destination
+		/// Start Time
 		/// </summary>
-		public DateTime Arrival { get; set; }
+		public string StartTime { get; set; }
+
+		/// <summary>
+		/// End Time
+		/// </summary>
+		public string EndTime { get; set; }
 
 		/// <summary>
 		/// Different types of places

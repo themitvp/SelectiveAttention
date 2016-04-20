@@ -14,7 +14,9 @@ namespace Travel.iOS
 	public class HomeViewController : UIViewController
 	{
 		public HomeView _homeView;
+		static NSString HomeCellId = new NSString ("HomeCellId");
 		public ObservableCollection<MyEvent> eventList { get; set; }
+
 
 		public HomeViewController ()
 		{
@@ -35,12 +37,12 @@ namespace Travel.iOS
 		{
 			base.ViewWillAppear (animated);
 
-			this.NavigationItem.SetRightBarButtonItem(
+			/*this.NavigationItem.SetRightBarButtonItem(
 				new UIBarButtonItem(UIBarButtonSystemItem.Add, (sender,args) => {
 					// button was clicked
 					this.NavigationController.PushViewController(new AddEventViewController(this), true);
 				})
-				, true);
+				, true);*/
 
 			// Make the font in the status bar white
 			//UIApplication.SharedApplication.StatusBarStyle = UIStatusBarStyle.LightContent;
@@ -55,6 +57,7 @@ namespace Travel.iOS
 			//OpenedFromNotification ();
 
 			BeginInvokeOnMainThread (delegate {
+				_homeView.listTable.RegisterClassForCellReuse(typeof(HomeTableCell), HomeCellId);
 				_homeView.listTable.Source = new HomeTableSource(this);
 				_homeView.listTable.ReloadData();
 			});
@@ -65,6 +68,15 @@ namespace Travel.iOS
 			eventList.Clear();
 			var eventsDB = AppDelegate.Current.MyEventManager.GetMyEvents().ToList();
 
+			var myEvent = new MyEvent() {
+				Name = "Home",
+				StartTime = "8:00-8:10",
+				EndTime = "12:20-12:50",
+				PlaceType = PlaceTypes.Home
+			};
+
+			eventList.Add(myEvent);
+
 			foreach (var i in eventsDB) {
 				eventList.Add(i);
 			}
@@ -72,7 +84,7 @@ namespace Travel.iOS
 
 		public void SaveMyEvent(MyEvent newMyEvent)
 		{
-			AppDelegate.Current.MyEventManager.SaveMyEvent(newMyEvent);
+			/*AppDelegate.Current.MyEventManager.SaveMyEvent(newMyEvent);
 
 			var date1 = DateTime.Now;
 			var seconds = (newMyEvent.Arrival - date1).TotalSeconds;
@@ -94,7 +106,7 @@ namespace Travel.iOS
 			notification.SoundName = UILocalNotification.DefaultSoundName;
 
 			// schedule it
-			UIApplication.SharedApplication.ScheduleLocalNotification(notification);
+			UIApplication.SharedApplication.ScheduleLocalNotification(notification);*/
 		}
 
 		public void OpenedFromNotification()

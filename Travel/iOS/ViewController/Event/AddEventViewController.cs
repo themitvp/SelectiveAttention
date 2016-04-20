@@ -46,7 +46,6 @@ namespace Travel.iOS
 						date = date.AddHours(2);
 
 						var newEvent = new MyEvent() {
-							Arrival = date,
 							Destination = cont.checkedMapItem.Name,
 							Latitude = cont.checkedMapItem.Placemark.Coordinate.Latitude,
 							Longitude = cont.checkedMapItem.Placemark.Coordinate.Longitude,

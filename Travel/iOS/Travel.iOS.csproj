@@ -131,6 +131,7 @@
     <Compile Include="ViewController\Stats\StatsTableSource.cs" />
     <Compile Include="ViewController\TabbedHome\NavigationController.cs" />
     <Compile Include="ViewController\Home\HomeTableSource.cs" />
+    <Compile Include="View\Home\HomeTableCell.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\SQLitePCL.raw.0.8.6\build\Xamarin.iOS10\SQLitePCL.raw.targets" Condition="Exists('..\packages\SQLitePCL.raw.0.8.6\build\Xamarin.iOS10\SQLitePCL.raw.targets')" />

@@ -56,26 +56,24 @@ namespace Travel.iOS
 			descriptionLabel.Text = stat.Description;
 
 			// Check travel type
-			//if (stat.TravelType != null) {
-				switch (stat.TravelType) {
-				case TravelTypes.Car:
-					icon.Image = UIImage.FromBundle("car");
-					break;
-				case TravelTypes.Walk:
-				case TravelTypes.Run:
-					icon.Image = UIImage.FromBundle("walking");
-					break;
-				case TravelTypes.Bicycle:
-					icon.Image = UIImage.FromBundle("bike");
-					break;
-				case TravelTypes.PublicTransport:
-					icon.Image = UIImage.FromBundle("train");
-					break;
+			switch (stat.TravelType) {
+			case TravelTypes.Car:
+				icon.Image = UIImage.FromBundle("car");
+				break;
+			case TravelTypes.Walk:
+			case TravelTypes.Run:
+				icon.Image = UIImage.FromBundle("walking");
+				break;
+			case TravelTypes.Bicycle:
+				icon.Image = UIImage.FromBundle("bike");
+				break;
+			case TravelTypes.PublicTransport:
+				icon.Image = UIImage.FromBundle("train");
+				break;
 			default:
 				icon.Image = UIImage.FromBundle("location");
 				break;
-				}
-			//}
+			}
 
 			// Check for type of statistic
 			switch (stat.StatType) 
