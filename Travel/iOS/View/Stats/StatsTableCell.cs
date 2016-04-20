@@ -15,6 +15,7 @@ namespace Travel.iOS
 		public StatsTableCell(IntPtr p) : base (p)
 		{
 			BackgroundColor = GlobalVariables.TravelLightGray;
+			SelectionStyle = UITableViewCellSelectionStyle.None;
 
 			numberLabel = new UILabel () {
 				Font = UIFont.FromName("HelveticaNeue-Thin", 50f)

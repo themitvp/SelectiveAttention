@@ -58,6 +58,11 @@ namespace Travel
 		public StatTypes? StatType { get; set; }
 
 		/// <summary>
+		/// The name of the event which the stats is about.
+		/// </summary>
+		public string EventName { get; set; }
+
+		/// <summary>
 		/// Different types of places
 		/// </summary>
 		public PlaceTypes? PlaceType { get; set; }
