@@ -29,14 +29,14 @@ Stats = [
 {
 	"Number" : 320,
 	"Metric" : "min.",
-	"Description" : "spent in public transport",
+	"Description" : "spent in [public transport]",
 	"StatType" : "TravelTime",
 	"TravelType" : "PublicTransport"	# All traveltypes
 },
 {
 	"Number" : 50,
 	"Metric" : "km",
-	"Description" : "travelled by car",
+	"Description" : "travelled by [car]",
 	"StatType" : "TravelDistance",
 	"TravelType" : "Car"	# All traveltypes
 },
@@ -64,7 +64,7 @@ Stats = [
 {
 	"Number" : 14,
 	"Metric" : "days",
-	"PlaceTypes" : "Home",	# Home, Work or School.
+	"EventName" : "My Home",	# Linked to MyEvent
 	"Description" : "spent at [location]",
 	"StatType" : "TimeAtPlace",
 	"TravelType" : ""	# Not used
@@ -72,7 +72,7 @@ Stats = [
 {
 	"Number" : 80,
 	"Metric" : "%",
-	"PlaceTypes" : "Home",	# Home, Work or School.
+	"EventName" : "My Home",	# Linked to MyEvent
 	"Weekday" : "Monday",
 	"Description" : "of all Mondays you spent at [location]",
 	"StatType" : "EachDay",
