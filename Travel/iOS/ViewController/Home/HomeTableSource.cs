@@ -17,10 +17,6 @@ namespace Travel.iOS
 			this.parent = parent;
 
 			TableItems = parent.eventList;
-			for (int i = 0; i < TableItems.Count; i++) {
-				//keys.Add(TableItems[i].Item1);
-			} 
-
 			TableItems.CollectionChanged += TableItems_CollectionChanged;
 		}
 

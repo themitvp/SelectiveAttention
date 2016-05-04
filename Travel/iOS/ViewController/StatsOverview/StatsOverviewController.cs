@@ -80,7 +80,6 @@ namespace Travel.iOS
 		protected void PopulateTable()
 		{
 			statList.Clear();
-			//var statsDB = AppDelegate.Current.MyStatManager.GetMyStats().ToList();
 
 			var travelTime = new StatOverview() {
 				Name = "Travel Time",
@@ -101,32 +100,39 @@ namespace Travel.iOS
 				StatType = StatTypes.TravelDistance,
 				Stats = new List<MyStat> {
 					new MyStat() {
-						Number = 20,
+						Number = 27,
 						Metric = "km",
 						Description = "travelled by car",
 						StatType = StatTypes.TravelDistance,
 						TravelType = TravelTypes.Car
 					},
 					new MyStat() {
-						Number = 30,
+						Number = 40,
 						Metric = "km",
 						Description = "travelled by walk",
 						StatType = StatTypes.TravelDistance,
 						TravelType = TravelTypes.Walk
 					},
 					new MyStat() {
-						Number = 15,
+						Number = 82,
 						Metric = "km",
 						Description = "travelled by public",
 						StatType = StatTypes.TravelDistance,
 						TravelType = TravelTypes.PublicTransport
 					},
 					new MyStat() {
-						Number = 35,
+						Number = 77,
 						Metric = "km",
 						Description = "travelled by Bicycle",
 						StatType = StatTypes.TravelDistance,
 						TravelType = TravelTypes.Bicycle
+					},
+					new MyStat() {
+						Number = 34,
+						Metric = "km",
+						Description = "travelled by run",
+						StatType = StatTypes.TravelDistance,
+						TravelType = TravelTypes.Run
 					}
 				}
 			};
@@ -221,7 +227,6 @@ namespace Travel.iOS
 				}
 			};
 				
-
 
 			var statsoverviewlist = new List<StatOverview> {
 				//travelTime,

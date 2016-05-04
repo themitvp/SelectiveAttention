@@ -10,7 +10,7 @@ namespace Travel.iOS
 
 		public static UIColor TravelGreen = UIColor.FromRGB(0x25, 0x9b, 0x24);
 
-		public static UIColor TravelRed = UIColor.FromRGB(0xe5, 0x1c, 0x23); //
+		public static UIColor TravelRed = UIColor.FromRGB(199, 92, 92);
 
 		public static UIColor TravelBlue = UIColor.FromRGB(0x3f, 0x51, 0xb5); //#3f51b5
 
@@ -23,6 +23,8 @@ namespace Travel.iOS
 		public static UIColor TravelLightBlue = UIColor.FromRGB(119, 179, 212);
 
 		public static UIColor TravelYellow = UIColor.FromRGB(222, 171, 73); //245, 207, 135
+
+
 
 		/// <summary>
 		/// This should hold the current stats color, so all borders are colored with the same color

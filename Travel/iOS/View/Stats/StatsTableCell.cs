@@ -96,7 +96,7 @@ namespace Travel.iOS
 					icon.Image = UIImage.FromBundle("clock");
 					break;
 				case StatTypes.MostUsed:
-					icon.Image = UIImage.FromBundle("mostUsed");
+					icon.Image = UIImage.FromBundle("clock");
 					break;
 				case StatTypes.TimeAtPlace:
 					//sideBorder.BackgroundColor = GlobalVariables.TravelTurkish;

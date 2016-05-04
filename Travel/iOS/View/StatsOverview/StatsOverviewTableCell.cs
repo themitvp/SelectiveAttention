@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using Xuni.iOS.Core;
 using Xuni.iOS.ChartCore;
 using Xuni.iOS.FlexPie;
-using Carousels;
 using System.Linq;
 
 namespace Travel.iOS
@@ -148,11 +147,11 @@ namespace Travel.iOS
 					break;
 				case StatTypes.MostUsed:
 					icon.Image = UIImage.FromBundle("clock");
-					sideBorder.BackgroundColor = GlobalVariables.TravelGray;
+					sideBorder.BackgroundColor = GlobalVariables.TravelRed;
 					break;
 				case StatTypes.TimeAtPlace:
 					icon.Image = UIImage.FromBundle("earth");
-					sideBorder.BackgroundColor = GlobalVariables.TravelTurkish;
+					sideBorder.BackgroundColor = GlobalVariables.TravelLightBlue;
 					break;
 				case StatTypes.EachDay:
 					icon.Image = UIImage.FromBundle("calender");
