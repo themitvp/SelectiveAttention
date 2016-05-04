@@ -5,6 +5,7 @@ using System;
 using System.IO;
 using SQLite;
 using PersonalDataApi;
+using Xuni.iOS.Core;
 
 namespace Travel.iOS
 {
@@ -112,6 +113,7 @@ namespace Travel.iOS
 				}
 			}
 
+			XuniLicenseManager.Key = License.Key;
 
 
 			if (UIDevice.CurrentDevice.CheckSystemVersion (8, 0)) {

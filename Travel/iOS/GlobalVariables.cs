@@ -16,7 +16,18 @@ namespace Travel.iOS
 
 		public static UIColor TravelTurkish = UIColor.FromRGB(32, 118, 155);
 
-		public static UIColor TravelGreenish = UIColor.FromRGB(99, 184, 159);
+		public static UIColor TravelGreenish = UIColor.FromRGB(118, 194, 175);
+
+		public static UIColor TravelGray = UIColor.FromRGB(191, 191, 177);
+
+		public static UIColor TravelLightBlue = UIColor.FromRGB(119, 179, 212);
+
+		public static UIColor TravelYellow = UIColor.FromRGB(222, 171, 73); //245, 207, 135
+
+		/// <summary>
+		/// This should hold the current stats color, so all borders are colored with the same color
+		/// </summary>
+		public static UIColor CurrentStatsColor = GlobalVariables.TravelTurkish;
 
 		private const string UserId = "UserId";
 
@@ -31,6 +42,8 @@ namespace Travel.iOS
 				NSUserDefaults.StandardUserDefaults.SetString(value, UserId);
 			}
 		}
+
+
 	}
 }
 

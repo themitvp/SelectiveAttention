@@ -84,6 +84,15 @@
     <Reference Include="SQLite-net">
       <HintPath>..\packages\sqlite-net-pcl.1.1.1\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLite-net.dll</HintPath>
     </Reference>
+    <Reference Include="Xuni.iOS.ChartCore">
+      <HintPath>..\Xuni\Xuni.iOS.ChartCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Xuni.iOS.Core">
+      <HintPath>..\Xuni\Xuni.iOS.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xuni.iOS.FlexPie">
+      <HintPath>..\Xuni\Xuni.iOS.FlexPie.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Travel\Travel.csproj">
@@ -132,6 +141,13 @@
     <Compile Include="ViewController\TabbedHome\NavigationController.cs" />
     <Compile Include="ViewController\Home\HomeTableSource.cs" />
     <Compile Include="View\Home\HomeTableCell.cs" />
+    <Compile Include="View\StatsOverview\StatsOverviewView.cs" />
+    <Compile Include="ViewController\StatsOverview\StatsOverviewController.cs" />
+    <Compile Include="View\StatsOverview\StatsOverviewTableCell.cs" />
+    <Compile Include="ViewController\StatsOverview\StatsOverviewTableSource.cs" />
+    <Compile Include="License.cs" />
+    <Compile Include="View\Maps\MapsView.cs" />
+    <Compile Include="ViewController\Maps\MapsViewController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\SQLitePCL.raw.0.8.6\build\Xamarin.iOS10\SQLitePCL.raw.targets" Condition="Exists('..\packages\SQLitePCL.raw.0.8.6\build\Xamarin.iOS10\SQLitePCL.raw.targets')" />
@@ -145,6 +161,10 @@
     <Folder Include="ViewController\TabbedHome\" />
     <Folder Include="ViewController\Stats\" />
     <Folder Include="View\Stats\" />
+    <Folder Include="View\StatsOverview\" />
+    <Folder Include="ViewController\StatsOverview\" />
+    <Folder Include="View\Maps\" />
+    <Folder Include="ViewController\Maps\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\stats.png" />
@@ -204,5 +224,9 @@
     <BundleResource Include="Resources\work.png" />
     <BundleResource Include="Resources\work%402x.png" />
     <BundleResource Include="Resources\work%403x.png" />
+    <BundleResource Include="Resources\chart.png" />
+    <BundleResource Include="Resources\running.png" />
+    <BundleResource Include="Resources\running%402x.png" />
+    <BundleResource Include="Resources\running%403x.png" />
   </ItemGroup>
 </Project>

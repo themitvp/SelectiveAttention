@@ -1,16 +1,16 @@
 ﻿using System;
-using UIKit;
 using Foundation;
 using System.Collections.ObjectModel;
+using UIKit;
 
 namespace Travel.iOS
 {
-	public class StatsTableSource : UITableViewSource
+	public class StatsOverviewTableSource : UITableViewSource
 	{
-		private StatsViewController parent;
-		static NSString StatsCellId = new NSString ("StatsCellId");
+		private StatsOverviewController parent;
+		static NSString StatsOverviewCellId = new NSString ("StatsOverviewCellId");
 
-		public StatsTableSource(StatsViewController parent)
+		public StatsOverviewTableSource(StatsOverviewController parent)
 		{
 			TableItems = parent.statList;
 			this.parent = parent;
@@ -18,10 +18,10 @@ namespace Travel.iOS
 
 		void TableItems_CollectionChanged (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
 		{
-			this.parent._statsView.listTable.ReloadData();
+			this.parent._statsOverviewView.listTable.ReloadData();
 		}
 
-		public ObservableCollection<MyStat> TableItems { get; set; }
+		public ObservableCollection<StatOverview> TableItems { get; set; }
 
 		public override nint RowsInSection(UITableView tableview, nint section)
 		{
@@ -31,17 +31,29 @@ namespace Travel.iOS
 		// Changes the height of the row dynamically
 		public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
 		{
-			return 150f;
+			var item = TableItems[indexPath.Row];
+
+			if (item.StatType == StatTypes.TravelDistance) {
+				return 300f;
+			}
+
+			return 84.6666666667f;
 		}
 
 		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 		{
-			var cell = (StatsTableCell) tableView.DequeueReusableCell(StatsCellId, indexPath);
+			var cell = (StatsOverviewTableCell) tableView.DequeueReusableCell(StatsOverviewCellId, indexPath);
 
 			var item = TableItems[indexPath.Row];
 
 			// Add content to the cell
 			cell.UpdateCell(item);
+
+			if (item.StatType == StatTypes.TravelDistance) {
+				cell.detailBtn.TouchUpInside += (sender, e) => {
+					ViewStats(item);
+				};
+			}
 
 			return cell;
 		}
@@ -50,7 +62,14 @@ namespace Travel.iOS
 		{
 			var item = TableItems[indexPath.Row];
 
+			ViewStats(item);
+
 			tableView.DeselectRow(indexPath, true); // normal iOS behaviour is to remove the blue highlight
+		}
+
+		private void ViewStats(StatOverview item) {
+			var viewController = new StatsViewController(item, parent);
+			parent.NavigationController.PushViewController(viewController, true);
 		}
 	}
 }

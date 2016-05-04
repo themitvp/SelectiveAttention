@@ -2,6 +2,7 @@
 using Foundation;
 using UIKit;
 using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace Travel.iOS
 {
@@ -9,11 +10,16 @@ namespace Travel.iOS
 	{
 		private HomeViewController parent;
 		static NSString HomeCellId = new NSString ("HomeCellId");
+		public List<string> keys;
 
 		public HomeTableSource(HomeViewController parent)
 		{
-			TableItems = parent.eventList;
 			this.parent = parent;
+
+			TableItems = parent.eventList;
+			for (int i = 0; i < TableItems.Count; i++) {
+				//keys.Add(TableItems[i].Item1);
+			} 
 
 			TableItems.CollectionChanged += TableItems_CollectionChanged;
 		}
@@ -23,9 +29,14 @@ namespace Travel.iOS
 			this.parent._homeView.listTable.ReloadData();
 		}
 
-		public ObservableCollection<MyEvent> TableItems { get; set; }
+		public ObservableCollection<Tuple<string, List<MyEvent>>> TableItems { get; set; }
 
 		public override nint RowsInSection(UITableView tableview, nint section)
+		{
+			return TableItems[(int)section].Item2.Count;
+		}
+
+		public override nint NumberOfSections(UITableView tableView)
 		{
 			return TableItems.Count;
 		}
@@ -40,7 +51,7 @@ namespace Travel.iOS
 		{
 			var cell = (HomeTableCell) tableView.DequeueReusableCell(HomeCellId, indexPath);
 
-			var item = TableItems[indexPath.Row];
+			var item = TableItems[indexPath.Section].Item2[indexPath.Row];
 
 			// Add text to cell
 			cell.UpdateCell(item);
@@ -50,16 +61,17 @@ namespace Travel.iOS
 
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 		{
-			Console.WriteLine("In RowSelected");
+			var item = TableItems[indexPath.Section].Item2[indexPath.Row];
 
-			var item = TableItems[indexPath.Row];
+			var viewController = new MapsViewController(item);
+			parent.NavigationController.PushViewController(viewController, true);
 
 			tableView.DeselectRow(indexPath, true); // normal iOS behaviour is to remove the blue highlight
 		}
 
 		public override string TitleForHeader (UITableView tableView, nint section)
 		{
-			return "Monday";
+			return TableItems[(int)section].Item1;
 		}
 	}
 }

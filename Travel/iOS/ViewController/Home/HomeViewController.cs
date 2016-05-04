@@ -8,6 +8,7 @@ using JourneyPlanner.Model.Repository;
 using PersonalDataApi;
 
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Travel.iOS
 {
@@ -15,14 +16,14 @@ namespace Travel.iOS
 	{
 		public HomeView _homeView;
 		static NSString HomeCellId = new NSString ("HomeCellId");
-		public ObservableCollection<MyEvent> eventList { get; set; }
+		public ObservableCollection<Tuple<string, List<MyEvent>>> eventList { get; set; }
 
 
 		public HomeViewController ()
 		{
 			Title = "Events";
 
-			eventList = new ObservableCollection<MyEvent> ();
+			eventList = new ObservableCollection<Tuple<string, List<MyEvent>>> ();
 		}
 
 		public override void LoadView()
@@ -66,20 +67,179 @@ namespace Travel.iOS
 		protected void PopulateTable()
 		{
 			eventList.Clear();
-			var eventsDB = AppDelegate.Current.MyEventManager.GetMyEvents().ToList();
 
-			var myEvent = new MyEvent() {
-				Name = "Home",
-				StartTime = "8:00-8:10",
-				EndTime = "12:20-12:50",
-				PlaceType = PlaceTypes.Home
-			};
 
-			eventList.Add(myEvent);
+			var monday = new Tuple<string, List<MyEvent>>("Monday", new List<MyEvent>() {
+				new MyEvent() {
+					Name = "Home",
+					StartTime = "8:00-8:10",
+					EndTime = "12:20-12:50",
+					PlaceType = PlaceTypes.Home,
+					Latitude = 55.75613006732355,
+					Longitude = 12.520766258239746
+				},
+				new MyEvent() {
+					Name = "DTU",
+					StartTime = "13:20-13:30",
+					EndTime = "16:50-17:10",
+					PlaceType = PlaceTypes.School,
+					Latitude = 55.785592,
+					Longitude = 12.521360
+				},
+				new MyEvent() {
+					Name = "Home",
+					StartTime = "17:30-18:00",
+					EndTime = "23:00-23:10",
+					PlaceType = PlaceTypes.Home,
+					Latitude = 55.75613006732355,
+					Longitude = 12.520766258239746
+				}
+			});
 
-			foreach (var i in eventsDB) {
-				eventList.Add(i);
-			}
+			var tuesday = new Tuple<string, List<MyEvent>>("Tuesday", new List<MyEvent>() {
+				new MyEvent() {
+					Name = "Home",
+					StartTime = "7:00-7:10",
+					EndTime = "7:50-8:00",
+					PlaceType = PlaceTypes.Home
+				},
+				new MyEvent() {
+					Name = "Nørrebrohallen",
+					StartTime = "8:30-8:50",
+					EndTime = "10:00-10:20"
+				},
+				new MyEvent() {
+					Name = "Ørnevej 2",
+					StartTime = "10:30-10:40",
+					EndTime = "17:00-17:10"
+				},
+				new MyEvent() {
+					Name = "Home",
+					StartTime = "17:30-18:00",
+					EndTime = "23:00-23:10",
+					PlaceType = PlaceTypes.Home
+				}
+			});
+
+			var wednesday = new Tuple<string, List<MyEvent>>("Wednesday", new List<MyEvent>() {
+				new MyEvent() {
+					Name = "Home",
+					StartTime = "8:00-8:10",
+					EndTime = "12:20-12:50",
+					PlaceType = PlaceTypes.Home
+				},
+				new MyEvent() {
+					Name = "DTU",
+					StartTime = "13:20-13:30",
+					EndTime = "16:50-17:10",
+					PlaceType = PlaceTypes.School
+				},
+				new MyEvent() {
+					Name = "Home",
+					StartTime = "17:30-18:00",
+					EndTime = "23:00-23:10",
+					PlaceType = PlaceTypes.Home
+				}
+			});
+
+			var thursday = new Tuple<string, List<MyEvent>>("Thursday", new List<MyEvent>() {
+				new MyEvent() {
+					Name = "Home",
+					StartTime = "8:00-8:10",
+					EndTime = "8:30-8:40",
+					PlaceType = PlaceTypes.Home
+				},
+				new MyEvent() {
+					Name = "DTU",
+					StartTime = "9:00-9:10",
+					EndTime = "11:40-12:10",
+					PlaceType = PlaceTypes.School
+				},
+				new MyEvent() {
+					Name = "Work",
+					StartTime = "12:40-13:00",
+					EndTime = "17:00-17:20",
+					PlaceType = PlaceTypes.Work
+				},
+				new MyEvent() {
+					Name = "Home",
+					StartTime = "12:40-13:00",
+					EndTime = "17:00-17:20",
+					PlaceType = PlaceTypes.Work
+				}
+			});
+
+			var friday = new Tuple<string, List<MyEvent>>("Friday", new List<MyEvent>() {
+				new MyEvent() {
+					Name = "Home",
+					StartTime = "8:00-8:10",
+					EndTime = "12:20-12:50",
+					PlaceType = PlaceTypes.Home
+				},
+				new MyEvent() {
+					Name = "DTU",
+					StartTime = "13:20-13:30",
+					EndTime = "16:50-17:10",
+					PlaceType = PlaceTypes.School
+				},
+				new MyEvent() {
+					Name = "Home",
+					StartTime = "17:30-18:00",
+					EndTime = "23:00-23:10",
+					PlaceType = PlaceTypes.Home
+				}
+			});
+
+			var saturday = new Tuple<string, List<MyEvent>>("Saturday", new List<MyEvent>() {
+				new MyEvent() {
+					Name = "Home",
+					StartTime = "8:00-8:10",
+					EndTime = "12:20-12:50",
+					PlaceType = PlaceTypes.Home
+				},
+				new MyEvent() {
+					Name = "DTU",
+					StartTime = "13:20-13:30",
+					EndTime = "16:50-17:10",
+					PlaceType = PlaceTypes.School
+				},
+				new MyEvent() {
+					Name = "Home",
+					StartTime = "17:30-18:00",
+					EndTime = "23:00-23:10",
+					PlaceType = PlaceTypes.Home
+				}
+			});
+			var sunday = new Tuple<string, List<MyEvent>>("Sunday", new List<MyEvent>() {
+				new MyEvent() {
+					Name = "Home",
+					StartTime = "8:00-8:10",
+					EndTime = "12:20-12:50",
+					PlaceType = PlaceTypes.Home
+				},
+				new MyEvent() {
+					Name = "DTU",
+					StartTime = "13:20-13:30",
+					EndTime = "16:50-17:10",
+					PlaceType = PlaceTypes.School
+				},
+				new MyEvent() {
+					Name = "Home",
+					StartTime = "17:30-18:00",
+					EndTime = "23:00-23:10",
+					PlaceType = PlaceTypes.Home
+				}
+			});
+
+			eventList.Add(monday);
+			eventList.Add(tuesday);
+			eventList.Add(wednesday);
+			eventList.Add(thursday);
+			eventList.Add(friday);
+			eventList.Add(saturday);
+			eventList.Add(sunday);
+
+
 		}
 
 		public void SaveMyEvent(MyEvent newMyEvent)

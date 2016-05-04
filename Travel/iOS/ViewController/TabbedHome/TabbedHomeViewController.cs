@@ -8,13 +8,13 @@ namespace Travel.iOS
 		NavigationController nav1;
 		NavigationController nav2;
 		UIViewController[] tabs;
-		StatsViewController vc1;
+		StatsOverviewController vc1;
 		HomeViewController vc2;
 
 		public TabbedHomeViewController()
 		{
 			// create our home controller based on the device
-			vc1 = new StatsViewController();
+			vc1 = new StatsOverviewController();
 			vc1.TabBarItem = new UITabBarItem();
 			vc1.TabBarItem.Image = UIImage.FromBundle("stats");
 			vc1.TabBarItem.Title = "Stats";
