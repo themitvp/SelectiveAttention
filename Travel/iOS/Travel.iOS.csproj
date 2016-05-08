@@ -93,6 +93,9 @@
     <Reference Include="Xuni.iOS.FlexPie">
       <HintPath>..\Xuni\Xuni.iOS.FlexPie.dll</HintPath>
     </Reference>
+    <Reference Include="SWTableViewCell">
+      <HintPath>..\Components\swtableviewcell-0.3.7.0\lib\ios-unified\SWTableViewCell.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Travel\Travel.csproj">
@@ -237,5 +240,11 @@
     <BundleResource Include="Resources\filter_week.png" />
     <BundleResource Include="Resources\filter_week%402x.png" />
     <BundleResource Include="Resources\filter_week%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="swtableviewcell">
+      <Version>0.3.7.0</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
   </ItemGroup>
 </Project>

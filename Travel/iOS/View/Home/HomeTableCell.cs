@@ -2,11 +2,12 @@
 using UIKit;
 using Foundation;
 using CoreGraphics;
+using SWTableViewCells;
 
 namespace Travel.iOS
 {
 	[Register ("HomeCellId")]
-	public class HomeTableCell : UITableViewCell
+	public class HomeTableCell : SWTableViewCell
 	{
 		private UILabel nameLabel, startTime, endTime;
 		private UIImageView icon;
@@ -51,8 +52,8 @@ namespace Travel.iOS
 		public void UpdateCell (MyEvent myEvent)
 		{	
 			nameLabel.Text = myEvent.Name;
-			startTime.Text = myEvent.StartTime;
-			endTime.Text = myEvent.EndTime;
+			startTime.Text = "Starts\t" + myEvent.StartTime;
+			endTime.Text =   "Ends\t" + myEvent.EndTime;
 
 			switch (myEvent.PlaceType) {
 			case PlaceTypes.Home:
@@ -79,19 +80,19 @@ namespace Travel.iOS
 			var cardPadding = 5;
 			var sideBorderWidth = 5;
 
-			icon.Frame = new CGRect (ContentView.Bounds.Width - iconSize - padding, padding, iconSize, iconSize);
-
 			card.Frame = new CGRect(0, cardPadding, ContentView.Bounds.Width, ContentView.Bounds.Height - cardPadding);
+
+			icon.Frame = new CGRect(ContentView.Bounds.Width - iconSize - padding, card.Frame.Y + (card.Frame.Height-iconSize)/2, iconSize, iconSize);
 
 			sideBorder.Frame = new CGRect(0, card.Frame.Y, sideBorderWidth, card.Frame.Height);
 
 			nameLabel.SizeToFit();
-			nameLabel.Frame = new CGRect (padding, 15, nameLabel.Frame.Width, nameLabel.Frame.Height);
+			nameLabel.Frame = new CGRect(padding, 15, nameLabel.Frame.Width, nameLabel.Frame.Height);
 
-			startTime.Frame = new CGRect (padding, nameLabel.Frame.Bottom + 4, ContentView.Bounds.Width - padding*2, 0);
+			startTime.Frame = new CGRect(padding, nameLabel.Frame.Bottom + 4, ContentView.Bounds.Width - padding*2, 0);
 			startTime.SizeToFit();
 
-			endTime.Frame = new CGRect (padding, startTime.Frame.Bottom + 2, ContentView.Bounds.Width - padding*2, 0);
+			endTime.Frame = new CGRect(padding, startTime.Frame.Bottom + 2, ContentView.Bounds.Width - padding*2, 0);
 			endTime.SizeToFit();
 		}
 	}

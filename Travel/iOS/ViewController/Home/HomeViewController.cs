@@ -72,7 +72,7 @@ namespace Travel.iOS
 			var monday = new Tuple<string, List<MyEvent>>("Monday", new List<MyEvent>() {
 				new MyEvent() {
 					Name = "Home",
-					StartTime = "8:00-8:10",
+					StartTime = "08:00-08:10",
 					EndTime = "12:20-12:50",
 					PlaceType = PlaceTypes.Home,
 					Latitude = 55.75613006732355,
@@ -99,13 +99,13 @@ namespace Travel.iOS
 			var tuesday = new Tuple<string, List<MyEvent>>("Tuesday", new List<MyEvent>() {
 				new MyEvent() {
 					Name = "Home",
-					StartTime = "7:00-7:10",
-					EndTime = "7:50-8:00",
+					StartTime = "07:00-07:10",
+					EndTime = "07:50-08:00",
 					PlaceType = PlaceTypes.Home
 				},
 				new MyEvent() {
 					Name = "Nørrebrohallen",
-					StartTime = "8:30-8:50",
+					StartTime = "08:30-08:50",
 					EndTime = "10:00-10:20"
 				},
 				new MyEvent() {
@@ -124,7 +124,7 @@ namespace Travel.iOS
 			var wednesday = new Tuple<string, List<MyEvent>>("Wednesday", new List<MyEvent>() {
 				new MyEvent() {
 					Name = "Home",
-					StartTime = "8:00-8:10",
+					StartTime = "08:00-08:10",
 					EndTime = "12:20-12:50",
 					PlaceType = PlaceTypes.Home
 				},
@@ -145,13 +145,13 @@ namespace Travel.iOS
 			var thursday = new Tuple<string, List<MyEvent>>("Thursday", new List<MyEvent>() {
 				new MyEvent() {
 					Name = "Home",
-					StartTime = "8:00-8:10",
-					EndTime = "8:30-8:40",
+					StartTime = "08:00-08:10",
+					EndTime = "08:30-08:40",
 					PlaceType = PlaceTypes.Home
 				},
 				new MyEvent() {
 					Name = "DTU",
-					StartTime = "9:00-9:10",
+					StartTime = "09:00-09:10",
 					EndTime = "11:40-12:10",
 					PlaceType = PlaceTypes.School
 				},
@@ -172,7 +172,7 @@ namespace Travel.iOS
 			var friday = new Tuple<string, List<MyEvent>>("Friday", new List<MyEvent>() {
 				new MyEvent() {
 					Name = "Home",
-					StartTime = "8:00-8:10",
+					StartTime = "08:00-08:10",
 					EndTime = "12:20-12:50",
 					PlaceType = PlaceTypes.Home
 				},
@@ -193,7 +193,7 @@ namespace Travel.iOS
 			var saturday = new Tuple<string, List<MyEvent>>("Saturday", new List<MyEvent>() {
 				new MyEvent() {
 					Name = "Home",
-					StartTime = "8:00-8:10",
+					StartTime = "08:00-08:10",
 					EndTime = "12:20-12:50",
 					PlaceType = PlaceTypes.Home
 				},
@@ -213,7 +213,7 @@ namespace Travel.iOS
 			var sunday = new Tuple<string, List<MyEvent>>("Sunday", new List<MyEvent>() {
 				new MyEvent() {
 					Name = "Home",
-					StartTime = "8:00-8:10",
+					StartTime = "08:00-08:10",
 					EndTime = "12:20-12:50",
 					PlaceType = PlaceTypes.Home
 				},
