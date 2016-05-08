@@ -13,10 +13,11 @@ namespace Travel.iOS
 		public StatsOverviewView _statsOverviewView;
 		static NSString StatsOverviewCellId = new NSString ("StatsOverviewCellId");
 		public ObservableCollection<StatOverview> statList { get; set; }
+		private UIBarButtonItem filterBtn;
 
 		public StatsOverviewController()
 		{
-			Title = "Stats (All)";
+			Title = "Stats";
 
 			statList = new ObservableCollection<StatOverview> ();
 		}
@@ -46,35 +47,42 @@ namespace Travel.iOS
 
 			this.NavigationController.NavigationBar.BarTintColor = GlobalVariables.TravelTurkish;
 
-			this.NavigationItem.SetRightBarButtonItem(
-				new UIBarButtonItem(UIImage.FromBundle("filter")
-					, UIBarButtonItemStyle.Plain
-					, (sender,args) => {
-						// button was clicked
-						var options = new UIActionSheet();
-						options.Title = "Filter: Select period";
-						options.AddButton("This Week");
-						options.AddButton("This Month");
-						options.AddButton("All");
-						options.AddButton("Cancel");
+			filterBtn = new UIBarButtonItem(UIImage.FromBundle("filter_all")
+				, UIBarButtonItemStyle.Plain
+				, (sender, args) => {
+				// button was clicked
+				var options = new UIActionSheet();
+				options.Title = "Filter: Select period";
+				options.AddButton("This Week");
+				options.AddButton("This Month");
+				options.AddButton("All");
+				options.AddButton("Cancel");
 
-						options.CancelButtonIndex = 3;  // black (Cancel)
-						options.ShowInView(this.View);
-						options.Clicked += (senders, es) => {
-							if (es.ButtonIndex == 0) {
-								Title = "Stats (This Week)";
-							}
-							else if (es.ButtonIndex == 1) {
-								Title = "Stats (This Month)";
-							}
-							else if (es.ButtonIndex == 2) {
-								Title = "Stats (All)";
-							}
-						};
-					})
-				, true);
+				options.CancelButtonIndex = 3;  // black (Cancel)
+				options.ShowInView(this.View);
+					options.Clicked += Options_Clicked;
+			});
+
+
+
+			this.NavigationItem.SetRightBarButtonItem(filterBtn, true);
 
 			PopulateTable();
+		}
+
+		void Options_Clicked (object sender, UIButtonEventArgs e)
+		{
+			if (e.ButtonIndex == 0) {
+				filterBtn.Image = UIImage.FromBundle("filter_week");
+			} else if (e.ButtonIndex == 1) {
+				filterBtn.Image = UIImage.FromBundle("filter_month");
+			} else if (e.ButtonIndex == 2) {
+				filterBtn.Image = UIImage.FromBundle("filter_all");
+			}
+			BeginInvokeOnMainThread(delegate {
+				PopulateTable();
+				_statsOverviewView.listTable.ReloadData();
+			});
 		}
 
 		protected void PopulateTable()

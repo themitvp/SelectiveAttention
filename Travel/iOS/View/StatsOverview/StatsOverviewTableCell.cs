@@ -19,7 +19,7 @@ namespace Travel.iOS
 		private FlexPie flexPie;
 		public UIButton detailBtn;
 
-		public class BrowserUsageData : Foundation.NSObject
+		public class PieData : Foundation.NSObject
 		{
 
 			[Export("TravelTypeName")]
@@ -28,7 +28,7 @@ namespace Travel.iOS
 			[Export("TravelNumber")]
 			public double TravelNumber { get; set; }
 
-			public BrowserUsageData(String name, double number)
+			public PieData(String name, double number)
 			{
 				TravelTypeName = name;
 				TravelNumber = number;
@@ -36,16 +36,14 @@ namespace Travel.iOS
 		}
 
 
-		public NSMutableArray GetBrowserDataList()
+		public NSMutableArray GetPieDataList(List<MyStat> stats)
 		{
 			NSMutableArray array = new NSMutableArray();
 			string[] traveltype_names = new string[] { "Car", "Public Transport", "Walk", "Bicycle", "Run" };
 
-			array.Add(new BrowserUsageData(traveltype_names[0], 27));
-			array.Add(new BrowserUsageData(traveltype_names[1], 40));
-			array.Add(new BrowserUsageData(traveltype_names[2], 82));
-			array.Add(new BrowserUsageData(traveltype_names[3], 77));
-			array.Add(new BrowserUsageData(traveltype_names[4], 34));
+			foreach (var stat in stats) {
+				array.Add(new PieData(stat.TravelType.ToString(), stat.Number));
+			}
 
 			return array;
 		}
@@ -68,9 +66,6 @@ namespace Travel.iOS
 
 			flexPie = new FlexPie();
 			flexPie.Tag = 1;
-			flexPie.ItemsSource = GetBrowserDataList();
-			flexPie.Binding = "TravelNumber";
-			flexPie.BindingName = "TravelTypeName";
 
 			// set palette
 			flexPie.Palette = XuniPalettes.Flatly();
@@ -168,6 +163,10 @@ namespace Travel.iOS
 				detailBtn.RemoveFromSuperview();
 				metricLabel.RemoveFromSuperview();
 			} else {
+				flexPie.ItemsSource = GetPieDataList(stat.Stats);
+				flexPie.Binding = "TravelNumber";
+				flexPie.BindingName = "TravelTypeName";
+
 				ContentView.BringSubviewToFront(icon);
 			}
 		}

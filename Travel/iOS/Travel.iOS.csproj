@@ -228,5 +228,14 @@
     <BundleResource Include="Resources\running.png" />
     <BundleResource Include="Resources\running%402x.png" />
     <BundleResource Include="Resources\running%403x.png" />
+    <BundleResource Include="Resources\filter_all.png" />
+    <BundleResource Include="Resources\filter_all%402x.png" />
+    <BundleResource Include="Resources\filter_all%403x.png" />
+    <BundleResource Include="Resources\filter_month.png" />
+    <BundleResource Include="Resources\filter_month%402x.png" />
+    <BundleResource Include="Resources\filter_month%403x.png" />
+    <BundleResource Include="Resources\filter_week.png" />
+    <BundleResource Include="Resources\filter_week%402x.png" />
+    <BundleResource Include="Resources\filter_week%403x.png" />
   </ItemGroup>
 </Project>
