@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace PersonalDataApi
 {
-	public class DummyData
+	public class DummyDataStats
 	{
-		public DummyData()
+		public DummyDataStats()
 		{
 			var travelTime = new StatOverview() {
 				Name = "Travel Time",
