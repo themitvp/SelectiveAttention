@@ -13,7 +13,7 @@ namespace Travel.iOS
 		public StatsOverviewView _statsOverviewView;
 		static NSString StatsOverviewCellId = new NSString ("StatsOverviewCellId");
 		public ObservableCollection<StatOverview> statList { get; set; }
-		private UIBarButtonItem filterBtn;
+		public UIBarButtonItem filterBtn;
 
 		public StatsOverviewController()
 		{
@@ -62,9 +62,7 @@ namespace Travel.iOS
 				options.ShowInView(this.View);
 					options.Clicked += Options_Clicked;
 			});
-
-
-
+			
 			this.NavigationItem.SetRightBarButtonItem(filterBtn, true);
 
 			PopulateTable();
@@ -79,8 +77,9 @@ namespace Travel.iOS
 			} else if (e.ButtonIndex == 2) {
 				filterBtn.Image = UIImage.FromBundle("filter_all");
 			}
+
 			BeginInvokeOnMainThread(delegate {
-				PopulateTable();
+				//PopulateTable();
 				_statsOverviewView.listTable.ReloadData();
 			});
 		}

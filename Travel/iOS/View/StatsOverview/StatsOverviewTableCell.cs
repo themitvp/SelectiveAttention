@@ -70,8 +70,8 @@ namespace Travel.iOS
 			// set palette
 			flexPie.Palette = XuniPalettes.Flatly();
 			// configure flexpie settings
-			flexPie.Header = "Distance";
-			flexPie.HeaderFont = UIFont.FromName("HelveticaNeue-Thin", 30f);
+			flexPie.Header = "Travel Distance";
+			flexPie.HeaderFont = UIFont.FromName("HelveticaNeue-Thin", 50f);
 			flexPie.InnerRadius = 0.6f;
 			flexPie.StartAngle = 90f;
 			flexPie.SelectedItemOffset = 0.1f;

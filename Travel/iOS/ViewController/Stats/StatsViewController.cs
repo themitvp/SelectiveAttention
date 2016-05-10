@@ -63,31 +63,7 @@ namespace Travel.iOS
 					break;
 			}
 
-			this.NavigationItem.SetRightBarButtonItem(
-				new UIBarButtonItem(UIImage.FromBundle("filter")
-					, UIBarButtonItemStyle.Plain
-					, (sender, args) => {
-					// button was clicked
-					var options = new UIActionSheet();
-					options.Title = "Filter: Select period";
-					options.AddButton("This Week");
-					options.AddButton("This Month");
-					options.AddButton("All");
-					options.AddButton("Cancel");
-
-					options.CancelButtonIndex = 3;  // black (Cancel)
-					options.ShowInView(this.View);
-					options.Clicked += (senders, es) => {
-						if (es.ButtonIndex == 0) {
-							Title = "Stats (This Week)";
-						} else if (es.ButtonIndex == 1) {
-							Title = "Stats (This Month)";
-						} else if (es.ButtonIndex == 2) {
-							Title = "Stats (All)";
-						}
-					};
-				})
-				, true);
+			this.NavigationItem.SetRightBarButtonItem(this.parent.filterBtn, true);
 		}
 	}
 }
