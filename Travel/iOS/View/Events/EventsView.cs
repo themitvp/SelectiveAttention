@@ -4,12 +4,12 @@ using CoreGraphics;
 
 namespace Travel.iOS
 {
-	public class HomeView : UIView
+	public class EventsView : UIView
 	{
 		// Subview properties
 		public UITableView listTable { get; set; }
 
-		public HomeView(CGRect frame): base(frame)
+		public EventsView(CGRect frame): base(frame)
 		{
 			this.BackgroundColor = UIColor.White;
 

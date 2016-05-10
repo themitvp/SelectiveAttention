@@ -6,14 +6,14 @@ using SWTableViewCells;
 
 namespace Travel.iOS
 {
-	[Register ("HomeCellId")]
-	public class HomeTableCell : SWTableViewCell
+	[Register ("EventsCellId")]
+	public class EventsTableCell : SWTableViewCell
 	{
 		private UILabel nameLabel, startTime, endTime;
 		private UIImageView icon;
 		private UIView card, sideBorder;
 
-		public HomeTableCell(IntPtr p) : base (p)
+		public EventsTableCell(IntPtr p) : base (p)
 		{
 			BackgroundColor = GlobalVariables.TravelLightGray;
 

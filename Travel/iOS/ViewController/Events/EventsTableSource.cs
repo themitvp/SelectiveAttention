@@ -7,26 +7,26 @@ using SWTableViewCells;
 
 namespace Travel.iOS
 {
-	public class HomeTableSource : UITableViewSource
+	public class EventsTableSource : UITableViewSource
 	{
-		private HomeViewController parent;
-		static NSString HomeCellId = new NSString ("HomeCellId");
+		private EventsViewController parent;
+		static NSString EventsCellId = new NSString ("EventsCellId");
 		public List<string> keys;
 		private CellDelegate cellDelegate;
 
-		public HomeTableSource(HomeViewController parent)
+		public EventsTableSource(EventsViewController parent)
 		{
 			this.parent = parent;
 
-			TableItems = parent.eventList;
+			TableItems = parent.eventsList;
 			TableItems.CollectionChanged += TableItems_CollectionChanged;
 
-			cellDelegate = new CellDelegate (TableItems, parent._homeView.listTable);
+			cellDelegate = new CellDelegate(TableItems, parent._eventsView.listTable);
 		}
 
 		void TableItems_CollectionChanged (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
 		{
-			this.parent._homeView.listTable.ReloadData();
+			this.parent._eventsView.listTable.ReloadData();
 		}
 
 		public ObservableCollection<Tuple<string, List<MyEvent>>> TableItems { get; set; }
@@ -51,7 +51,7 @@ namespace Travel.iOS
 		{
 			tableView.RowHeight = 100f;
 
-			var cell = (HomeTableCell) tableView.DequeueReusableCell(HomeCellId);
+			var cell = (EventsTableCell) tableView.DequeueReusableCell(EventsCellId);
 
 			var item = TableItems[indexPath.Section].Item2[indexPath.Row];
 

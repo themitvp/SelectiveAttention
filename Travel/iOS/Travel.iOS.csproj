@@ -130,10 +130,8 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="GlobalVariables.cs" />
-    <Compile Include="View\Home\HomeView.cs" />
     <Compile Include="View\Event\AddEventView.cs" />
     <Compile Include="ViewController\Event\AddEventViewController.cs" />
-    <Compile Include="ViewController\Home\HomeViewController.cs" />
     <Compile Include="ViewController\Event\SearchResultTableController.cs" />
     <Compile Include="View\Event\PickerModel.cs" />
     <Compile Include="ViewController\TabbedHome\TabbedHomeViewController.cs" />
@@ -142,8 +140,6 @@
     <Compile Include="View\Stats\StatsTableCell.cs" />
     <Compile Include="ViewController\Stats\StatsTableSource.cs" />
     <Compile Include="ViewController\TabbedHome\NavigationController.cs" />
-    <Compile Include="ViewController\Home\HomeTableSource.cs" />
-    <Compile Include="View\Home\HomeTableCell.cs" />
     <Compile Include="View\StatsOverview\StatsOverviewView.cs" />
     <Compile Include="ViewController\StatsOverview\StatsOverviewController.cs" />
     <Compile Include="View\StatsOverview\StatsOverviewTableCell.cs" />
@@ -151,16 +147,18 @@
     <Compile Include="License.cs" />
     <Compile Include="View\Maps\MapsView.cs" />
     <Compile Include="ViewController\Maps\MapsViewController.cs" />
+    <Compile Include="ViewController\Events\EventsViewController.cs" />
+    <Compile Include="View\Events\EventsView.cs" />
+    <Compile Include="View\Events\EventsTableCell.cs" />
+    <Compile Include="ViewController\Events\EventsTableSource.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\SQLitePCL.raw.0.8.6\build\Xamarin.iOS10\SQLitePCL.raw.targets" Condition="Exists('..\packages\SQLitePCL.raw.0.8.6\build\Xamarin.iOS10\SQLitePCL.raw.targets')" />
   <ItemGroup>
     <Folder Include="View\" />
     <Folder Include="ViewController\" />
-    <Folder Include="View\Home\" />
     <Folder Include="View\Event\" />
     <Folder Include="ViewController\Event\" />
-    <Folder Include="ViewController\Home\" />
     <Folder Include="ViewController\TabbedHome\" />
     <Folder Include="ViewController\Stats\" />
     <Folder Include="View\Stats\" />
@@ -168,6 +166,8 @@
     <Folder Include="ViewController\StatsOverview\" />
     <Folder Include="View\Maps\" />
     <Folder Include="ViewController\Maps\" />
+    <Folder Include="ViewController\Events\" />
+    <Folder Include="View\Events\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\stats.png" />

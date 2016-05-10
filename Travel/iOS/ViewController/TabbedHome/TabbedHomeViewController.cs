@@ -9,7 +9,7 @@ namespace Travel.iOS
 		NavigationController nav2;
 		UIViewController[] tabs;
 		StatsOverviewController vc1;
-		HomeViewController vc2;
+		EventsViewController vc2;
 
 		public TabbedHomeViewController()
 		{
@@ -19,7 +19,7 @@ namespace Travel.iOS
 			vc1.TabBarItem.Image = UIImage.FromBundle("stats");
 			vc1.TabBarItem.Title = "Stats";
 
-			vc2 = new HomeViewController();
+			vc2 = new EventsViewController();
 			vc2.TabBarItem = new UITabBarItem();
 			vc2.TabBarItem.Image = UIImage.FromBundle("events");
 			vc2.TabBarItem.Title = "Events";

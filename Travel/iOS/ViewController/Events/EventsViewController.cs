@@ -12,38 +12,38 @@ using System.Collections.Generic;
 
 namespace Travel.iOS
 {
-	public class HomeViewController : UIViewController
+	public class EventsViewController : UIViewController
 	{
-		public HomeView _homeView;
-		static NSString HomeCellId = new NSString ("HomeCellId");
-		public ObservableCollection<Tuple<string, List<MyEvent>>> eventList { get; set; }
+		public EventsView _eventsView;
+		static NSString EventsCellId = new NSString ("EventsCellId");
+		public ObservableCollection<Tuple<string, List<MyEvent>>> eventsList { get; set; }
 
 
-		public HomeViewController ()
+		public EventsViewController ()
 		{
 			Title = "Events";
 
-			eventList = new ObservableCollection<Tuple<string, List<MyEvent>>> ();
+			eventsList = new ObservableCollection<Tuple<string, List<MyEvent>>> ();
 		}
 
 		public override void LoadView()
 		{
 			base.LoadView();
 
-			_homeView = new HomeView(new CGRect(0,0,View.Frame.Width, View.Frame.Height));
-			this.View = _homeView;
+			_eventsView = new EventsView(new CGRect(0,0,View.Frame.Width, View.Frame.Height));
+			this.View = _eventsView;
 		}
 
 		public override void ViewWillAppear (bool animated)
 		{
 			base.ViewWillAppear (animated);
 
-			/*this.NavigationItem.SetRightBarButtonItem(
+			this.NavigationItem.SetRightBarButtonItem(
 				new UIBarButtonItem(UIBarButtonSystemItem.Add, (sender,args) => {
 					// button was clicked
 					this.NavigationController.PushViewController(new AddEventViewController(this), true);
 				})
-				, true);*/
+				, true);
 
 			// Make the font in the status bar white
 			//UIApplication.SharedApplication.StatusBarStyle = UIStatusBarStyle.LightContent;
@@ -58,15 +58,15 @@ namespace Travel.iOS
 			//OpenedFromNotification ();
 
 			BeginInvokeOnMainThread (delegate {
-				_homeView.listTable.RegisterClassForCellReuse(typeof(HomeTableCell), HomeCellId);
-				_homeView.listTable.Source = new HomeTableSource(this);
-				_homeView.listTable.ReloadData();
+				_eventsView.listTable.RegisterClassForCellReuse(typeof(EventsTableCell), EventsCellId);
+				_eventsView.listTable.Source = new EventsTableSource(this);
+				_eventsView.listTable.ReloadData();
 			});
 		}
 
 		protected void PopulateTable()
 		{
-			eventList.Clear();
+			eventsList.Clear();
 
 
 			var monday = new Tuple<string, List<MyEvent>>("Monday", new List<MyEvent>() {
@@ -231,13 +231,13 @@ namespace Travel.iOS
 				}
 			});
 
-			eventList.Add(monday);
-			eventList.Add(tuesday);
-			eventList.Add(wednesday);
-			eventList.Add(thursday);
-			eventList.Add(friday);
-			eventList.Add(saturday);
-			eventList.Add(sunday);
+			eventsList.Add(monday);
+			eventsList.Add(tuesday);
+			eventsList.Add(wednesday);
+			eventsList.Add(thursday);
+			eventsList.Add(friday);
+			eventsList.Add(saturday);
+			eventsList.Add(sunday);
 
 
 		}

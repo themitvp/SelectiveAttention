@@ -13,11 +13,11 @@ namespace Travel.iOS
 	{
 		public AddEventView _addEventView;
 
-		private HomeViewController parent;
+		private EventsViewController parent;
 		private UISearchController searchController;
 		CLLocationManager locationManager = new CLLocationManager ();
 
-		public AddEventViewController (HomeViewController parent)
+		public AddEventViewController (EventsViewController parent)
 		{
 			Title = "Add Event";
 			this.parent = parent;
