@@ -35,7 +35,7 @@ namespace Travel
 		/// <summary>
 		/// Stat number
 		/// </summary>
-		public int Number { get; set; }
+		public float Number { get; set; }
 
 		/// <summary>
 		/// Stat description

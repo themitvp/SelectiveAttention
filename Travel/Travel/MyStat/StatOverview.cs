@@ -12,6 +12,11 @@ namespace Travel
 		/// <summary>
 		/// Name of stat overview
 		/// </summary>
+		public int Id { get; set; }
+
+		/// <summary>
+		/// Name of stat overview
+		/// </summary>
 		public string Name { get; set; }
 
 		/// <summary>

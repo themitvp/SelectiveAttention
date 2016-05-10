@@ -39,6 +39,7 @@
     <Compile Include="Infrastructure\UrlEncodeExtention.cs" />
     <Compile Include="Infrastructure\IRequestBase.cs" />
     <Compile Include="Infrastructure\RequestBase.cs" />
+    <Compile Include="Infrastructure\DummyData.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -52,5 +53,11 @@
     <Reference Include="HttpClientFramework">
       <HintPath>..\HttpClientFramework\bin\Debug\HttpClientFramework.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Travel\Travel.csproj">
+      <Project>{3B4A6E7E-AE89-43A9-B512-F7098F1668C7}</Project>
+      <Name>Travel</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

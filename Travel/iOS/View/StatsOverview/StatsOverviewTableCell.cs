@@ -26,12 +26,12 @@ namespace Travel.iOS
 			public string TravelTypeName { get; set; }
 
 			[Export("TravelNumber")]
-			public double TravelNumber { get; set; }
+			public int TravelNumber { get; set; }
 
-			public PieData(String name, double number)
+			public PieData(String name, float number)
 			{
 				TravelTypeName = name;
-				TravelNumber = number;
+				TravelNumber = (int)number;
 			}
 		}
 
@@ -39,10 +39,15 @@ namespace Travel.iOS
 		public NSMutableArray GetPieDataList(List<MyStat> stats)
 		{
 			NSMutableArray array = new NSMutableArray();
-			string[] traveltype_names = new string[] { "Car", "Public Transport", "Walk", "Bicycle", "Run" };
 
 			foreach (var stat in stats) {
-				array.Add(new PieData(stat.TravelType.ToString(), stat.Number));
+				if (stat.Description.Contains("Bus")) {
+					array.Add(new PieData("Bus", stat.Number));
+				} else if (stat.Description.Contains("Train")) {
+					array.Add(new PieData("Train", stat.Number));
+				} else {
+					array.Add(new PieData(stat.TravelType.ToString(), stat.Number));
+				}
 			}
 
 			return array;
